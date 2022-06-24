@@ -1,0 +1,77 @@
+[{
+  "_id": {
+    "$oid": "62b5e88ba6e78636d6488645"
+  },
+  "name": "Santiago",
+  "surname": "Bruno",
+  "email": "santt31@gmail.com",
+  "password": 686635586,
+  "groups": [
+    "62b5e8d6a6e78636d648864a",
+    "62b5e8d6a6e78636d648864b"
+  ],
+  "expenses": [
+    {
+      "idExpenses": "62b5e902a6e78636d648864c",
+      "payment": "100€",
+      "debt": "60€",
+      "paid": "40€"
+    },
+    {
+      "idExpenses": "62b5e902a6e78636d648864d",
+      "payment": "100€",
+      "debt": "60€",
+      "paid": "40€"
+    },
+    {
+      "idExpenses": "62b5e902a6e78636d648864e",
+      "payment": "80€",
+      "debt": "70€",
+      "paid": "10€"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "62b5e88ba6e78636d6488646"
+  },
+  "name": "Ramiro",
+  "surname": "Mejias",
+  "email": "ramiro.mejias@gmail.com",
+  "password": 686635589,
+  "groups": [
+    "62b5e8d6a6e78636d648864a",
+    "62b5e8d6a6e78636d648864b"
+  ],
+  "expenses": [
+    {
+      "idExpenses": "62b5e902a6e78636d648864c",
+      "payment": "100€",
+      "debt": "60€",
+      "paid": "40€"
+    },
+    {
+      "idExpenses": "62b5e902a6e78636d648864d",
+      "payment": "100€",
+      "debt": "60€",
+      "paid": "40€"
+    },
+    {
+      "idExpenses": "62b5e902a6e78636d648864e",
+      "payment": "80€",
+      "debt": "70€",
+      "paid": "10€"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "62b5e88ba6e78636d6488647"
+  },
+  "name": "Maria",
+  "surname": "Pérez",
+  "email": "maria.perez@gmail.com",
+  "password": 686635584,
+  "groups": [
+    "62b5e8d6a6e78636d648864b"
+  ],
+  "expenses": []
+}]

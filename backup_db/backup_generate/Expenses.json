@@ -1,0 +1,61 @@
+[{
+  "_id": {
+    "$oid": "62b5e902a6e78636d648864c"
+  },
+  "title": "Hotel Mansion - Dia 1",
+  "startdate": "15/06/2022",
+  "enddate": "16/06/2022",
+  "note": "Hotel de 5 estrellas por 1 noche",
+  "expenses_categories": [
+    "62b5e8b7a6e78636d6488648"
+  ],
+  "payments": [
+    {
+      "date": "30/06/2022",
+      "note": "pago parcial",
+      "idUsersFrom": "62b5e88ba6e78636d6488646",
+      "idUsersTo": "62b5e88ba6e78636d6488647",
+      "quantity": "40€"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "62b5e902a6e78636d648864d"
+  },
+  "title": "Hotel Royal - Dia 2",
+  "startdate": "16/06/2022",
+  "enddate": "17/06/2022",
+  "note": "Hotel de 5 estrellas por 1 noche",
+  "expenses_categories": [
+    "62b5e8b7a6e78636d6488648"
+  ],
+  "payments": [
+    {
+      "date": "30/06/2022",
+      "note": "pago parcial",
+      "idUsersFrom": "62b5e88ba6e78636d6488646",
+      "idUsersTo": "62b5e88ba6e78636d6488647",
+      "quantity": "40€"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "62b5e902a6e78636d648864e"
+  },
+  "title": "Taxis y Buses",
+  "startdate": "15/06/2022",
+  "enddate": "17/06/2022",
+  "note": "",
+  "expenses_categories": [
+    "62b5e8b7a6e78636d6488649"
+  ],
+  "payments": [
+    {
+      "date": "30/06/2022",
+      "note": "pago parcial",
+      "idUsersFrom": "62b5e88ba6e78636d6488646",
+      "idUsersTo": "62b5e88ba6e78636d6488647",
+      "quantity": "10€"
+    }
+  ]
+}]

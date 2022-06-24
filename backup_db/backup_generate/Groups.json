@@ -1,0 +1,28 @@
+[{
+  "_id": {
+    "$oid": "62b5e8d6a6e78636d648864a"
+  },
+  "groupName": "Salida a Paris",
+  "users": [
+    "62b5e88ba6e78636d6488645",
+    "62b5e88ba6e78636d6488646",
+    "62b5e88ba6e78636d6488647"
+  ],
+  "groups_types": [
+    "62b5e8b7a6e78636d6488648",
+    "62b5e8b7a6e78636d6488649"
+  ]
+},{
+  "_id": {
+    "$oid": "62b5e8d6a6e78636d648864b"
+  },
+  "groupName": "Salida a Berlin",
+  "users": [
+    "62b5e88ba6e78636d6488645",
+    "62b5e88ba6e78636d6488646"
+  ],
+  "groups_types": [
+    "62b5e8b7a6e78636d6488648",
+    "62b5e8b7a6e78636d6488649"
+  ]
+}]
