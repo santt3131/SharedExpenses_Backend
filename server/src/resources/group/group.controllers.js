@@ -1,4 +1,6 @@
 const Group = require("./Group.model");
+const User = require("../user/User.model");
+const mongoose = require('mongoose');
 
 const findMany = async (req, res)=>{
     try {
@@ -27,12 +29,51 @@ const findOne = async(req, res)=>{
 
 const createOne = async (req, res)=>{
     try {
-        const newUser = req.body;
-        const doc = await Group.create(newUser);
+        const newGroup = req.body;
+        const doc = await Group.create(newGroup);
         res.status(200).json({ results : [doc]});
     } catch (error) {
         console.log(e);
         res.status(500).json({ error: " Creation failed"});   
+    }
+}
+
+const createGroupTran = async (req,res)=>{
+    try {
+
+        //PASO 0- El usuario a quien voy agregar al grupo tiene que estar creado
+        //PASO 1- Creo el grupo
+        const newUser = req.body;
+        const groupNew = await Group.create(newUser);
+
+        //PASO 1.1 - Crea o se envia el array de usuarios agregar
+        //el mismo que crea y un amigo (Erika y Santiago), lo determina FRONT
+        //const arrayUsers = ['62c304cb21b02466c5c2065a','62b5e88ba6e78636d6488645']
+
+
+        //PASO 2 - Actualizo user
+        //A todos esos usuarios del array del objeto, le agrego a cada uno el id del grupo
+        const doc = await User.updateMany({
+            _id: {
+                $in: req.body.users
+            }
+        },
+        {
+            $push:{
+                groups: [groupNew._id]
+            }
+        },
+        {multi: true}
+        );
+       
+        if(!doc){
+            return res.status(404).json({ error : "Not found"});
+        }
+        res.status(200).json({ results: [doc]});
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: 'Cannot update'});
     }
 }
 
@@ -72,5 +113,6 @@ module.exports = {
     findOne,
     createOne,
     updateOne,
-    deleteOne
+    deleteOne,
+    createGroupTran
 }

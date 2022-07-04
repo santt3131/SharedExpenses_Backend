@@ -28,10 +28,12 @@ const findOne = async(req, res)=>{
 const createOne = async (req, res)=>{
     try {
         const newUser = req.body;
+        console.log('new User es', newUser);
         const doc = await User.create(newUser);
+        console.log('doc es ', doc);
         res.status(200).json({ results : [doc]});
     } catch (error) {
-        console.log(e);
+        console.log(error);
         res.status(500).json({ error: " Creation failed"});   
     }
 }
