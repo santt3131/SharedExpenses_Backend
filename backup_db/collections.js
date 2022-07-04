@@ -1,4 +1,6 @@
-//use share
+//CREAR LA BASE DE DATOS como
+//use shared_expenses
+
 db.createCollections('Users');
 
 db.Users.insertMany([

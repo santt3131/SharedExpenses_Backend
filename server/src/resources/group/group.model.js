@@ -1,33 +1,27 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const UserSchema= new Schema(
+const GroupSchema = new Schema(
     {
-        name:{
+        groupName:{
             type:String,
             required: true,
             maxlength:100
         },
-        email:{
+        groupDescription:{
             type: String,
             required: true,
             maxlength:100
         },
-        password:{
-            type: String,
-            required: true,
-            minlength: 9,
-            maxlength: 9
-        },
-        groups: [
+        users: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'Group'
+                ref: 'User'
             },
         ]
     }
 );
 
-//UserSchema.index({ _id : 1}) 
-const User= mongoose.model('User', UserSchema);
-module.exports = User;
+//GroupSchema.index({ _id : 1}) 
+const Group= mongoose.model('Group', GroupSchema);
+module.exports = Group;

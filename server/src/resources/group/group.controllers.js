@@ -1,8 +1,8 @@
-const User = require("./User.model");
+const Group = require("./Group.model");
 
 const findMany = async (req, res)=>{
     try {
-        const docs = await User.find().populate("groups").lean().exec();
+        const docs = await Group.find().populate("users").lean().exec();
         res.status(200).json({results: docs});
     } catch (error) {
         console.log(e);
@@ -14,7 +14,7 @@ const findMany = async (req, res)=>{
 const findOne = async(req, res)=>{
     const { id } = req.params;
     try {
-        const doc = await User.findOne({ _id: id}).populate("groups").exec();
+        const doc = await Group.findOne({ _id: id}).populate("users").exec();
         if(!doc){
             return res.status(400).json({ results : [doc] });
         }
@@ -28,7 +28,7 @@ const findOne = async(req, res)=>{
 const createOne = async (req, res)=>{
     try {
         const newUser = req.body;
-        const doc = await User.create(newUser);
+        const doc = await Group.create(newUser);
         res.status(200).json({ results : [doc]});
     } catch (error) {
         console.log(e);
@@ -39,7 +39,7 @@ const createOne = async (req, res)=>{
 const updateOne = async (req,res)=>{
     const { id } = req.params;
     try {
-        const doc = await User.findOneAndUpdate({ _id: id}, 
+        const doc = await Group.findOneAndUpdate({ _id: id}, 
             req.body, { new: true});
         if(!doc){
             return res.status(404).json({ error : "Not found"});
@@ -54,7 +54,7 @@ const updateOne = async (req,res)=>{
 const deleteOne = async(req, res)=>{
     const { id } = req.params;
     try {
-        const doc = await User.findOneAndDelete({ _id: id}, { new: true});
+        const doc = await Group.findOneAndDelete({ _id: id}, { new: true});
         if(!doc){
             return res.status(404).json({ error : "Not found"});
         }

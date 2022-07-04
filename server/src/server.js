@@ -11,8 +11,14 @@ app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
 
-const UserRouter = require('./resources/User/User.route');
-app.use('/Users', UserRouter);
+
+const UserRouter = require('./resources/user/user.route');
+app.use('/users', UserRouter);
+
+const GroupRouter = require('./resources/group/group.route');
+app.use('/groups', GroupRouter);
+
+
 
 const startServer = async()=>{
     await db.connect();
