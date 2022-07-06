@@ -18,9 +18,6 @@ version: '3.8'
 services:
   mongo1:
     container_name: mongo1
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: fullstack
     image: mongo:4.4
     volumes:
       - ~/mongors/data1:/data/db
@@ -36,9 +33,6 @@ services:
     entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "dbrs" ]
   mongo2:
     container_name: mongo2
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: fullstack
     image: mongo:4.4
     volumes:
       - ~/mongors/data2:/data/db
@@ -50,9 +44,6 @@ services:
     entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "dbrs" ]
   mongo3:
     container_name: mongo3
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: fullstack
     image: mongo:4.4
     volumes:
       - ~/mongors/data3:/data/db
