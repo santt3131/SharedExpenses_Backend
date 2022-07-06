@@ -38,7 +38,30 @@ const createOne = async (req, res)=>{
     }
 }
 
-const createGroupTran = async (req,res)=>{
+const createGroupTran = async(req, res)=>{
+    const session = await mongoose.startSession();
+    session.startTransaction();
+
+    try {
+        //await func(session);
+        const newUser = req.body;
+        const groupNew = await Group.create([newUser], 
+            {session}); 
+        await session.commitTransaction();
+        session.endSession();
+        
+        if(!groupNew){
+            return res.status(404).json({ error : "Not found"});
+        }
+        return res.status(200).json({ results: [groupNew]});   
+    } catch (error) {
+        await session.abortTransaction();
+        session.endSession();
+        throw error;
+    }
+}
+
+const createGroupTran2= async (req,res)=>{
     const session = await mongoose.startSession();
     await session.startTransaction( async ()=>{
         //PASO 0- El usuario a quien voy agregar al grupo tiene que estar creado
