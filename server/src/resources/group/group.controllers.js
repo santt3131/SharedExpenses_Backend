@@ -38,20 +38,28 @@ const createOne = async (req, res)=>{
     }
 }
 
-const createGroupTran = async (req,res)=>{
+const createGroupUser = async (req,res)=>{
     try {
 
-        //PASO 0- El usuario a quien voy agregar al grupo tiene que estar creado
-        //PASO 1- Creo el grupo
-        const newUser = req.body;
-        const groupNew = await Group.create(newUser);
+        //PASO 1- Verificar que los ids users existan en la coleccion USERS
+        const arrayUser = req.body.users;
 
-        //PASO 1.1 - Crea o se envia el array de usuarios agregar
-        //el mismo que crea y un amigo (Erika y Santiago), lo determina FRONT
-        //const arrayUsers = ['62c304cb21b02466c5c2065a','62b5e88ba6e78636d6488645']
+        let isArrayuserInUserCollection = await User.find({
+            _id: {
+                $in: arrayUser
+            }
+        });
+
+        //si todos los usuarios buscados son encontrados
+        if(isArrayuserInUserCollection.length !== arrayUser.length){
+             return res.status(500).json({ error: 'Cannot update, some User id was not found'});
+         }        
+
+        //PASO 2- Creo el grupo
+        const groupNew = await Group.create(req.body);
 
 
-        //PASO 2 - Actualizo user
+        //PASO 3 - Actualizo user
         //A todos esos usuarios del array del objeto, le agrego a cada uno el id del grupo
         const doc = await User.updateMany({
             _id: {
@@ -65,10 +73,11 @@ const createGroupTran = async (req,res)=>{
         },
         {multi: true}
         );
-       
+        
         if(!doc){
             return res.status(404).json({ error : "Not found"});
         }
+
         res.status(200).json({ results: [doc]});
 
     } catch (error) {
@@ -114,5 +123,5 @@ module.exports = {
     createOne,
     updateOne,
     deleteOne,
-    createGroupTran
+    createGroupUser
 }

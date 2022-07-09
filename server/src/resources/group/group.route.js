@@ -7,7 +7,7 @@ router.get('/', GroupControllers.findMany);
 router.get('/:id', GroupControllers.findOne);
 //router.put('/:id', GroupControllers.updateOne);
 //Primera transaccion
-router.put('/creategroup', GroupControllers.createGroupTran);
+router.put('/creategroup', GroupControllers.createGroupUser);
 
 router.delete('/:id', GroupControllers.deleteOne);
 
