@@ -6,9 +6,8 @@ router.post('/', GroupControllers.createOne);
 router.get('/', GroupControllers.findMany);
 router.get('/:id', GroupControllers.findOne);
 //router.put('/:id', GroupControllers.updateOne);
-//Primera transaccion
 router.put('/creategroup', GroupControllers.createGroupUser);
 
-router.delete('/:id', GroupControllers.deleteOne);
+router.delete('/:idUser', GroupControllers.deleteOne);
 
 module.exports = router;
