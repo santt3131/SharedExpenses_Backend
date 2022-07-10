@@ -21,15 +21,16 @@ const expenseSchema = new Schema({
   expenseTotal: {
     type: Decimal128,
   },
-  users: {
-    type: Array,
-    required: true,
-  },
+  users: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
   payments: {
     type: Array,
   },
 });
 
-const Expense = mongoose.model("expense", expenseSchema);
-
+const Expense = mongoose.model("Expense", expenseSchema);
 module.exports = Expense;

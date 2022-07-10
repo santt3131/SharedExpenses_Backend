@@ -17,7 +17,20 @@ const createOne = async (req, res) => {
     const doc = await Category.create(newCategory);
     res.status(200).send({ results: [doc] });
   } catch (e) {
-    res.status(500).send({ error: "Creation failed" });
+    res.status(500).send({ error: "Cannot create" });
+  }
+};
+
+const findOne = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const doc = await Category.findOne({ _id: id });
+    if (!doc) {
+      return res.status(404).json({ error: "Not found" });
+    }
+    res.status(200).json({ results: [doc] });
+  } catch (e) {
+    res.status(500).json({ error: "Cannot get" });
   }
 };
 
@@ -46,19 +59,6 @@ const deleteOne = async (req, res) => {
     res.status(200).json({ results: [doc] });
   } catch (e) {
     res.status(500).json({ error: "Cannot delete" });
-  }
-};
-
-const findOne = async (req, res) => {
-  const { id } = req.params;
-  try {
-    const doc = await Category.findOne({ _id: id });
-    if (!doc) {
-      return res.status(404).json({ error: "Not found" });
-    }
-    res.status(200).json({ results: [doc] });
-  } catch (e) {
-    res.status(500).json({ error: "Cannot get category" });
   }
 };
 
