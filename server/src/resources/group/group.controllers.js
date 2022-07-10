@@ -3,7 +3,7 @@ const User = require("../user/User.model");
 
 const findMany = async (req, res) => {
 	try {
-		const docs = await Group.find().populate("users").lean().exec();
+		const docs = await Group.find().lean().populate("users", "_id name email").exec();
 		res.status(200).json({ results: docs });
 	} catch (error) {
 		console.log(e);
@@ -14,7 +14,7 @@ const findMany = async (req, res) => {
 const findOne = async (req, res) => {
 	const { id } = req.params;
 	try {
-		const doc = await Group.findOne({ _id: id }).populate("users").exec();
+		const doc = await Group.findOne({ _id: id }).populate("users", "_id name email").exec();
 		if (!doc) {
 			return res.status(400).json({ results: [doc] });
 		}
@@ -86,6 +86,7 @@ const createGroupUser = async (req, res) => {
 	}
 };
 
+//Solo actualizará groupName and groupDescripción
 const updateOne = async (req, res) => {
 	const { id } = req.params;
 	try {
@@ -97,26 +98,15 @@ const updateOne = async (req, res) => {
 		}
 		res.status(200).json({ results: [doc] });
 	} catch (error) {
-		console.log(e);
+		console.log(error);
 		res.status(500).json({ error: "Cannot update" });
 	}
 };
 
-//CASO 1
-/*
-Elimina el grupo sin haber puesto hecho ningún gasto
-Actualiza el campo de groups de la coleccion "User" al que pertenecia
-*/
-
-//CASO2
-/*
-Elimina el grupo habiendo gastos de por medio ¿?
-Actualiza el campo de groups de la coleccion "User" al que pertenecia
-*/
-
 const deleteOne = async (req, res) => {
 	const { idUser } = req.params;
 	try {
+		//PASO 0 - SOLO PERMITIR SI NO HAY NINGUN GASTO DE POR MEDIO.
 		//PASO 1- Verifico si ese id de grupo...DONE docUser, docGroup
 		//PASO 2 - Elimino de users todos el grupo que tenga asociado
 		const docUser = await User.updateMany(
