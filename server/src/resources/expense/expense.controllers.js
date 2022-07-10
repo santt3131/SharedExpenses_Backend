@@ -4,7 +4,10 @@ const Expense = require("./expense.model");
 const findMany = async (req, res) => {
   const { id } = req.params;
   try {
-    const docs = await Expense.find().populate("users");
+    const docs = await Expense.find()
+      .populate("users.userId", "name email")
+      .lean()
+      .exec();
     res.status(200).json({ results: docs });
   } catch (error) {
     console.log(error);
@@ -26,7 +29,9 @@ const createOne = async (req, res) => {
 const findOne = async (req, res) => {
   const { id } = req.params;
   try {
-    const doc = await Expense.findOne({ _id: id }).populate("users").exec();
+    const doc = await Expense.findOne({ _id: id })
+      .populate("users.userId", "name email")
+      .exec();
     if (!doc) {
       return res.status(404).json({ error: "Not found" });
     }

@@ -2,7 +2,10 @@ const User = require("./user.model");
 
 const findMany = async (req, res) => {
   try {
-    const docs = await User.find().populate("groups").lean().exec();
+    const docs = await User.find()
+      .populate("groups", "groupName groupDescription")
+      .lean()
+      .exec();
     res.status(200).json({ results: docs });
   } catch (error) {
     res.status(500).json({ error: "Internal error" });
@@ -25,7 +28,9 @@ const createOne = async (req, res) => {
 const findOne = async (req, res) => {
   const { id } = req.params;
   try {
-    const doc = await User.findOne({ _id: id }).populate("groups").exec();
+    const doc = await User.findOne({ _id: id })
+      .populate("groups", "groupName groupDescription")
+      .exec();
     if (!doc) {
       return res.status(400).json({ results: [doc] });
     }
