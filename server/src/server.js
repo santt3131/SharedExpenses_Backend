@@ -4,7 +4,6 @@ const morgan = require("morgan");
 const { PORT } = require("./config");
 const db = require("./db");
 
-//creamos el objeto de express
 const app = express();
 app.disable("x-powered-by");
 app.use(cors());
@@ -20,10 +19,13 @@ app.use("/groups", GroupRouter);
 const CategoryRouter = require("./resources/category/category.router");
 app.use("/categories", CategoryRouter);
 
+const ExpenseRouter = require("./resources/expense/expense.router");
+app.use("/expenses", ExpenseRouter);
+
 const startServer = async () => {
   await db.connect();
   app.listen(PORT, () => {
-    console.log(`SPLIT API listening on : ${PORT}`);
+    console.log(`Shared Expense API listening on : ${PORT}`);
   });
 };
 
