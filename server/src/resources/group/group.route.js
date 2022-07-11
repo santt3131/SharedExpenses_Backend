@@ -1,12 +1,12 @@
 const { Router } = require("express");
-const GroupControllers = require("./Group.controllers");
+const groupControllers = require("./group.controllers");
 const router = Router();
 
-router.get('/', GroupControllers.findMany);
-router.get('/:id', GroupControllers.findOne);
-router.put('/:id', GroupControllers.updateOne);
-router.post('/', GroupControllers.createGroupUser);
+router.get('/', groupControllers.findMany);
+router.get('/:id', groupControllers.findOne);
+router.put('/:id', groupControllers.updateOne);
+router.post('/', groupControllers.createGroupUser);
 
-router.delete('/:idUser', GroupControllers.deleteOne);
+router.delete('/:idUser', groupControllers.deleteOne);
 
 module.exports = router;

@@ -1,5 +1,5 @@
-const Group = require("./Group.model");
-const User = require("../user/User.model");
+const Group = require("./group.model");
+const User = require("../user/user.model");
 
 const findMany = async (req, res) => {
 	try {

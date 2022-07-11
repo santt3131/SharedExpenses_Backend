@@ -1,4 +1,4 @@
-const User = require("./User.model");
+const User = require("./user.model");
 
 const findMany = async (req, res) => {
     try {
