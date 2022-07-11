@@ -10,16 +10,16 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 
-const userRouter = require("./resources/user/user.router");
+const userRouter = require("./resources/user/user.route");
 app.use("/users", userRouter);
 
-const groupRouter = require("./resources/group/group.router");
+const groupRouter = require("./resources/group/group.route");
 app.use("/groups", groupRouter);
 
-const categoryRouter = require("./resources/category/category.router");
+const categoryRouter = require("./resources/category/category.route");
 app.use("/categories", categoryRouter);
 
-const expenseRouter = require("./resources/expense/expense.router");
+const expenseRouter = require("./resources/expense/expense.route");
 app.use("/expenses", expenseRouter);
 
 const startServer = async () => {
