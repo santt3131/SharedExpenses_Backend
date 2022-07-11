@@ -25,16 +25,6 @@ const findOne = async (req, res) => {
 	}
 };
 
-const createOne = async (req, res) => {
-	try {
-		const newGroup = req.body;
-		const doc = await Group.create(newGroup);
-		res.status(200).json({ results: [doc] });
-	} catch (error) {
-		console.log(e);
-		res.status(500).json({ error: " Creation failed" });
-	}
-};
 
 const createGroupUser = async (req, res) => {
 	try {
@@ -87,6 +77,7 @@ const createGroupUser = async (req, res) => {
 };
 
 //Solo actualizará groupName and groupDescripción
+//Agrego los expenses...
 const updateOne = async (req, res) => {
 	const { id } = req.params;
 	try {
@@ -146,7 +137,6 @@ const deleteOne = async (req, res) => {
 module.exports = {
 	findMany,
 	findOne,
-	createOne,
 	updateOne,
 	deleteOne,
 	createGroupUser,
