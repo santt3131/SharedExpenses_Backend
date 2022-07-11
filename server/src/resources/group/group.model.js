@@ -19,6 +19,12 @@ const groupSchema = new Schema(
         ref: "User",
       },
     ],
+    expenses: [
+      {
+        expenseId: String,
+        expenseTitle: String,
+      },
+    ],
   },
   { versionKey: false }
 );
