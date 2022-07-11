@@ -75,4 +75,4 @@ module.exports = {
     createOne,
     updateOne,
     deleteOne
-};
+}; 
