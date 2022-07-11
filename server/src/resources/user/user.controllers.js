@@ -31,7 +31,7 @@ const createOne = async (req, res) => {
         console.log('new User es', newUser);
         const doc = await User.create(newUser);
         console.log('doc es ', doc);
-        res.status(200).json({ results: [doc] });
+        res.status(201).json({ results: [doc] });
     } catch (error) {
         console.log(error);
         res.status(500).json({ error: " Creation failed" });

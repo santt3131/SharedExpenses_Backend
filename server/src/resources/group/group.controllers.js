@@ -47,6 +47,10 @@ const createGroupUser = async (req, res) => {
 		//PASO 2- Creo el grupo
 		const groupNew = await Group.create(req.body);
 
+		if (!groupNew) {
+			return res.status(500).json({ error: "Group was not created" });
+		}
+
 		//PASO 3 - Actualizo user
 		//A todos esos usuarios del array del objeto, le agrego a cada uno el id del grupo
 		const doc = await User.updateMany(
@@ -69,7 +73,7 @@ const createGroupUser = async (req, res) => {
 			return res.status(404).json({ error: "Not found" });
 		}
 
-		res.status(200).json({ results: "Group was created with its users" });
+		res.status(201).json({ results: "Group was created with its users" });
 	} catch (error) {
 		console.log(error);
 		res.status(500).json({ error: "Cannot update" });
