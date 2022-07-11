@@ -65,7 +65,7 @@ const deleteOne = async (req, res) => {
         console.log(e);
         res.status(500).json({ error: 'Cannot delete' });
     }
-};
+}; 
 
 
 
