@@ -20,7 +20,7 @@ const createOne = async (req, res) => {
   try {
     // Verificar que los ID de usuario recibidos existen en la colección users
     const reqUsersArray = req.body.users;
-    let userIds = reqUsersArray.map((u) => u.userId);
+    let userIds = reqUsersArray.map((user) => user.userId);
     const collUsersArray = await User.find({
       _id: {
         $in: userIds,
@@ -29,15 +29,13 @@ const createOne = async (req, res) => {
     if (userIds.length !== collUsersArray.length) {
       return res
         .status(404)
-        .json({ error: "Cannot create. Some user was not found" });
+        .json({ error: "Cannot create expense. Some users do not exist" });
     }
 
     // Crear gasto
     const newExpense = await Expense.create(req.body);
     if (!newExpense) {
-      return res
-        .status(500)
-        .json({ error: "Cannot create | La parte del gasto" });
+      return res.status(500).json({ error: "Cannot create the expense" });
     }
 
     // Actualizar gasto en la colección groups
@@ -50,16 +48,20 @@ const createOne = async (req, res) => {
     ];
     const doc = await Group.findOneAndUpdate(
       { _id: groupId },
-      { expenses },
+      {
+        $push: {
+          expenses: expenses,
+        },
+      },
       { new: true }
     );
     if (!doc) {
       return res
         .status(500)
-        .json({ error: "Cannot create | La parte del grupo" });
+        .json({ error: "Cannot update the expense in groups collection" });
     }
 
-    res.status(201).send({ results: [doc] });
+    res.status(201).send({ results: [newExpense] });
   } catch (error) {
     res.status(500).send({ error: "Cannot create" });
   }
