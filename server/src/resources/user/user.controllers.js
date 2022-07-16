@@ -1,4 +1,5 @@
 const User = require("./user.model");
+const Expense = require("../expense/expense.model");
 
 const findMany = async (req, res) => {
   try {
@@ -67,10 +68,44 @@ const deleteOne = async (req, res) => {
   }
 };
 
+const findManyPaymentsFrom = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const doc = await Expense.find({
+      payments: { $elemMatch: { userFromId: id } },
+    });
+    if (!doc) {
+      return res.status(400).json({ results: [doc] });
+    }
+    res.status(200).json({ results: [doc] });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Cannot get payments from this user" });
+  }
+};
+
+const findManyPaymentsTo = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const doc = await Expense.find({
+      payments: { $elemMatch: { userToId: id } },
+    });
+    if (!doc) {
+      return res.status(400).json({ results: [doc] });
+    }
+    res.status(200).json({ results: [doc] });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Cannot get payments to this user" });
+  }
+};
+
 module.exports = {
   findMany,
   findOne,
   createOne,
   updateOne,
   deleteOne,
+  findManyPaymentsFrom,
+  findManyPaymentsTo,
 };
