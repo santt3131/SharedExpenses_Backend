@@ -100,11 +100,20 @@ const updateOne = async (req, res) => {
 const deleteOne = async (req, res) => {
   const { id } = req.params;
   try {
-    const doc = await Expense.findOneAndDelete({ _id: id }, { new: true });
-    if (!doc) {
-      return res.status(404).json({ error: "Not found" });
+    const doc = await Expense.find({
+      _id: id,
+      $expr: {
+        $gt: [{ $size: { $ifNull: ["$payments", []] } }, 0],
+      },
+    });
+    if (doc.length > 0) {
+      return res
+        .status(500)
+        .json({ error: "Cannot delete. This expense contains payments" });
     }
-    res.status(200).json({ results: [doc] });
+    //Falta eliminar este expense en el grupo correspondiente
+    const toDelete = await Expense.findOneAndDelete({ _id: id }, { new: true });
+    res.status(200).json({ results: [toDelete] });
   } catch (error) {
     res.status(500).json({ error: "Cannot delete" });
   }

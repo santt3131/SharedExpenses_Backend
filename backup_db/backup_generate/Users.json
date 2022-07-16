@@ -2,76 +2,32 @@
   "_id": {
     "$oid": "62b5e88ba6e78636d6488645"
   },
-  "name": "Santiago",
-  "surname": "Bruno",
+  "name": "Santiago Bruno",
   "email": "santt31@gmail.com",
-  "password": 686635586,
+  "password": "Password.123",
   "groups": [
-    "62b5e8d6a6e78636d648864a",
-    "62b5e8d6a6e78636d648864b"
-  ],
-  "expenses": [
-    {
-      "idExpenses": "62b5e902a6e78636d648864c",
-      "payment": "100€",
-      "debt": "60€",
-      "paid": "40€"
-    },
-    {
-      "idExpenses": "62b5e902a6e78636d648864d",
-      "payment": "100€",
-      "debt": "60€",
-      "paid": "40€"
-    },
-    {
-      "idExpenses": "62b5e902a6e78636d648864e",
-      "payment": "80€",
-      "debt": "70€",
-      "paid": "10€"
-    }
+    "62b737d75163f4de8bc0c006",
+    "62b7383f5163f4de8bc0c007"
   ]
 },{
   "_id": {
     "$oid": "62b5e88ba6e78636d6488646"
   },
-  "name": "Ramiro",
-  "surname": "Mejias",
+  "name": "Ramiro Mejías",
   "email": "ramiro.mejias@gmail.com",
-  "password": 686635589,
+  "password": "Password.123",
   "groups": [
-    "62b5e8d6a6e78636d648864a",
-    "62b5e8d6a6e78636d648864b"
-  ],
-  "expenses": [
-    {
-      "idExpenses": "62b5e902a6e78636d648864c",
-      "payment": "100€",
-      "debt": "60€",
-      "paid": "40€"
-    },
-    {
-      "idExpenses": "62b5e902a6e78636d648864d",
-      "payment": "100€",
-      "debt": "60€",
-      "paid": "40€"
-    },
-    {
-      "idExpenses": "62b5e902a6e78636d648864e",
-      "payment": "80€",
-      "debt": "70€",
-      "paid": "10€"
-    }
+    "62b737d75163f4de8bc0c006",
+    "62b7383f5163f4de8bc0c007"
   ]
 },{
   "_id": {
     "$oid": "62b5e88ba6e78636d6488647"
   },
-  "name": "Maria",
-  "surname": "Pérez",
+  "name": "Maria Pérez",
   "email": "maria.perez@gmail.com",
-  "password": 686635584,
+  "password": "Password.123",
   "groups": [
-    "62b5e8d6a6e78636d648864b"
-  ],
-  "expenses": []
+    "62b737d75163f4de8bc0c006"
+  ]
 }]
