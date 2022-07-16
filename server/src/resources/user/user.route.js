@@ -8,4 +8,7 @@ router.get("/:id", userControllers.findOne);
 router.put("/:id", userControllers.updateOne);
 router.delete("/:id", userControllers.deleteOne);
 
+router.get("/:id/paymentsfrom", userControllers.findManyPaymentsFrom);
+router.get("/:id/paymentsto", userControllers.findManyPaymentsTo);
+
 module.exports = router;

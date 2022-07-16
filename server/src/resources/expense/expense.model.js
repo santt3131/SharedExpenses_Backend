@@ -37,9 +37,29 @@ const expenseSchema = new Schema(
         },
       },
     ],
-    payments: {
-      type: Array,
-    },
+    payments: [
+      {
+        date: {
+          type: Date,
+          required: true,
+        },
+        note: {
+          type: String,
+        },
+        userFromId: {
+          type: String,
+          required: true,
+        },
+        userToId: {
+          type: String,
+          required: true,
+        },
+        quantity: {
+          type: Schema.Types.Decimal128,
+          required: true,
+        },
+      },
+    ],
   },
   { versionKey: false }
 );

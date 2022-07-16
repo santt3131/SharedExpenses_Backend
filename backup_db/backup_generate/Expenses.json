@@ -1,61 +1,150 @@
 [{
   "_id": {
-    "$oid": "62b5e902a6e78636d648864c"
+    "$oid": "62b9d8d13b031c174dc38fa1"
   },
-  "title": "Hotel Mansion - Dia 1",
-  "startdate": "15/06/2022",
-  "enddate": "16/06/2022",
-  "note": "Hotel de 5 estrellas por 1 noche",
-  "expenses_categories": [
-    "62b5e8b7a6e78636d6488648"
+  "categoryId": "62b9d9eb355700006d004aa2",
+  "date": {
+    "$date": {
+      "$numberLong": "981014400000"
+    }
+  },
+  "note": "Una excelente salida",
+  "title": "Restaurante La Mancha",
+  "expenseTotal": {
+    "$numberDecimal": "120"
+  },
+  "users": [
+    {
+      "userId": "62b5e88ba6e78636d6488645",
+      "debt": {
+        "$numberDecimal": "0"
+      },
+      "paid": {
+        "$numberDecimal": "100"
+      }
+    },
+    {
+      "userId": "62b5e88ba6e78636d6488646",
+      "debt": {
+        "$numberDecimal": "40"
+      },
+      "paid": {
+        "$numberDecimal": "20"
+      }
+    },
+    {
+      "userId": "62b5e88ba6e78636d6488647",
+      "debt": {
+        "$numberDecimal": "0"
+      },
+      "paid": {
+        "$numberDecimal": "0"
+      }
+    }
   ],
   "payments": [
     {
-      "date": "30/06/2022",
-      "note": "pago parcial",
-      "idUsersFrom": "62b5e88ba6e78636d6488646",
-      "idUsersTo": "62b5e88ba6e78636d6488647",
-      "quantity": "40€"
+      "date": {
+        "$date": {
+          "$numberLong": "981014400000"
+        }
+      },
+      "note": "Primer pago parcial",
+      "userFromId": "62b5e88ba6e78636d6488646",
+      "userToId": "62b5e88ba6e78636d6488645",
+      "quantity": {
+        "$numberDecimal": "30"
+      }
+    },
+    {
+      "date": {
+        "$date": {
+          "$numberLong": "981014400000"
+        }
+      },
+      "note": "Lo que faltaba por pagar",
+      "userFromId": "62b5e88ba6e78636d6488646",
+      "userToId": "62b5e88ba6e78636d6488645",
+      "quantity": {
+        "$numberDecimal": "10"
+      }
     }
   ]
 },{
   "_id": {
-    "$oid": "62b5e902a6e78636d648864d"
+    "$oid": "62b9ec1e3b031c174dc38fd6"
   },
-  "title": "Hotel Royal - Dia 2",
-  "startdate": "16/06/2022",
-  "enddate": "17/06/2022",
-  "note": "Hotel de 5 estrellas por 1 noche",
-  "expenses_categories": [
-    "62b5e8b7a6e78636d6488648"
-  ],
-  "payments": [
-    {
-      "date": "30/06/2022",
-      "note": "pago parcial",
-      "idUsersFrom": "62b5e88ba6e78636d6488646",
-      "idUsersTo": "62b5e88ba6e78636d6488647",
-      "quantity": "40€"
+  "categoryId": "62b9da0d355700006d004aa5",
+  "date": {
+    "$date": {
+      "$numberLong": "981014400000"
     }
-  ]
-},{
-  "_id": {
-    "$oid": "62b5e902a6e78636d648864e"
   },
-  "title": "Taxis y Buses",
-  "startdate": "15/06/2022",
-  "enddate": "17/06/2022",
   "note": "",
-  "expenses_categories": [
-    "62b5e8b7a6e78636d6488649"
+  "title": "Compra de maleta",
+  "expenseTotal": {
+    "$numberDecimal": "160"
+  },
+  "users": [
+    {
+      "userId": "62b5e88ba6e78636d6488645",
+      "debt": {
+        "$numberDecimal": "10"
+      },
+      "paid": {
+        "$numberDecimal": "60"
+      }
+    },
+    {
+      "userId": "62b5e88ba6e78636d6488646",
+      "debt": {
+        "$numberDecimal": "0"
+      },
+      "paid": {
+        "$numberDecimal": "100"
+      }
+    }
+  ],
+  "payments": []
+},{
+  "_id": {
+    "$oid": "62ba4cca761a3641682693e8"
+  },
+  "categoryId": "62b9da08355700006d004aa4",
+  "date": {
+    "$date": {
+      "$numberLong": "981014400000"
+    }
+  },
+  "note": "Viajamos en IBERIA",
+  "title": "Compra de boleto",
+  "expenseTotal": {
+    "$numberDecimal": "300"
+  },
+  "users": [
+    {
+      "userId": "62b5e88ba6e78636d6488647",
+      "debt": {
+        "$numberDecimal": "0"
+      },
+      "paid": {
+        "$numberDecimal": "300"
+      }
+    }
   ],
   "payments": [
     {
-      "date": "30/06/2022",
-      "note": "pago parcial",
-      "idUsersFrom": "62b5e88ba6e78636d6488646",
-      "idUsersTo": "62b5e88ba6e78636d6488647",
-      "quantity": "10€"
+      "date": {
+        "$date": {
+          "$numberLong": "981014400000"
+        }
+      },
+      "note": "",
+      "userFromId": "62b5e88ba6e78636d6488645",
+      "userToId": "62b5e88ba6e78636d6488647",
+      "quantity": {
+        "$numberDecimal": "100"
+      }
     }
   ]
 }]
