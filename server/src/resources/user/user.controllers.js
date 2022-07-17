@@ -100,22 +100,6 @@ const findManyPaymentsTo = async (req, res) => {
   }
 };
 
-const findManyExpensesByUser = async (req, res) => {
-  const { id } = req.params;
-  try {
-    const doc = await Expense.find({
-      users: { $elemMatch: { userId: id } },
-    });
-    if (!doc) {
-      return res.status(400).json({ results: [doc] });
-    }
-    res.status(200).json({ results: [doc] });
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: "Cannot get expenses by id" });
-  }
-};
-
 module.exports = {
   findMany,
   findOne,
@@ -124,5 +108,4 @@ module.exports = {
   deleteOne,
   findManyPaymentsFrom,
   findManyPaymentsTo,
-  findManyExpensesByUser
 };
