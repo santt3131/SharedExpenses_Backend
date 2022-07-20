@@ -1,33 +1,37 @@
-[{
-  "_id": {
-    "$oid": "62b5e88ba6e78636d6488645"
+[
+  {
+    "_id": {
+      "$oid": "62b5e88ba6e78636d6488645"
+    },
+    "name": "Santiago Bruno",
+    "email": "santt31@gmail.com",
+    "password": "Password.123",
+    "groups": [
+      "62b737d75163f4de8bc0c006",
+      "62b7383f5163f4de8bc0c007"
+    ]
   },
-  "name": "Santiago Bruno",
-  "email": "santt31@gmail.com",
-  "password": "Password.123",
-  "groups": [
-    "62b737d75163f4de8bc0c006",
-    "62b7383f5163f4de8bc0c007"
-  ]
-},{
-  "_id": {
-    "$oid": "62b5e88ba6e78636d6488646"
+  {
+    "_id": {
+      "$oid": "62b5e88ba6e78636d6488646"
+    },
+    "name": "Ramiro Mejías",
+    "email": "ramiro.mejias@gmail.com",
+    "password": "Password.123",
+    "groups": [
+      "62b737d75163f4de8bc0c006",
+      "62b7383f5163f4de8bc0c007"
+    ]
   },
-  "name": "Ramiro Mejías",
-  "email": "ramiro.mejias@gmail.com",
-  "password": "Password.123",
-  "groups": [
-    "62b737d75163f4de8bc0c006",
-    "62b7383f5163f4de8bc0c007"
-  ]
-},{
-  "_id": {
-    "$oid": "62b5e88ba6e78636d6488647"
-  },
-  "name": "Maria Pérez",
-  "email": "maria.perez@gmail.com",
-  "password": "Password.123",
-  "groups": [
-    "62b737d75163f4de8bc0c006"
-  ]
-}]
+  {
+    "_id": {
+      "$oid": "62b5e88ba6e78636d6488647"
+    },
+    "name": "Maria Pérez",
+    "email": "maria.perez@gmail.com",
+    "password": "Password.123",
+    "groups": [
+      "62b737d75163f4de8bc0c006"
+    ]
+  }
+]
