@@ -2,6 +2,7 @@ const res = require("express/lib/response");
 const Expense = require("./expense.model");
 const User = require("../user/user.model");
 const Group = require("../group/group.model");
+const mongoose = require("mongoose");
 
 const findMany = async (req, res) => {
   try {
@@ -96,6 +97,53 @@ const updateOne = async (req, res) => {
   }
 };
 
+const addPayments = async (req, res) => {
+  const { id } = req.params;
+  console.log('los pagos son', req.body);
+  try {
+    const doc = await Expense.findOneAndUpdate(
+      { _id: id },
+      {
+        $push: {
+          payments: req.body
+        }
+      },
+      { new: true }
+    );
+
+    if (!doc) {
+      return res.status(404).json({ error: "Not found" });
+    }
+    res.status(200).json({ results: [doc] });
+  } catch (error) {
+    res.status(500).json({ error: "Cannot update" });
+  }
+};
+
+const deletePayments = async (req, res) => {
+  const { id } = req.params; //id de expenses
+  const { _id } = req.body;
+  const idPayment = mongoose.Types.ObjectId(_id);
+
+  try {
+    const doc = await Expense.findOneAndUpdate(
+      { _id: id },
+      {
+        $pull: {
+          payments: { _id: idPayment }
+        },
+      },
+      { new: true });
+    if (!doc) {
+      return res.status(404).json({ error: "Not found" });
+    }
+    res.status(200).json({ results: [doc] });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Cannot delete" });
+  }
+};
+
 const deleteOne = async (req, res) => {
   const { id } = req.params;
   try {
@@ -141,6 +189,8 @@ const deleteOne = async (req, res) => {
 module.exports = {
   findMany,
   createOne,
+  addPayments,
+  deletePayments,
   findOne,
   updateOne,
   deleteOne,

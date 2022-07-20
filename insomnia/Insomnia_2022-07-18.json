@@ -1,23 +1,23 @@
 {
     "_type": "export",
     "__export_format": 4,
-    "__export_date": "2022-07-13T21:42:20.901Z",
-    "__export_source": "insomnia.desktop.app:v2022.4.2",
+    "__export_date": "2022-07-18T21:17:25.036Z",
+    "__export_source": "insomnia.desktop.app:v2022.3.0",
     "resources": [
         {
-            "_id": "req_0c396709bf3e459db7fde7b27ce75374",
+            "_id": "req_0daaced01e884e3d99b4d0b1b65cf375",
             "parentId": "fld_58aefee9d33d4b118999362d14d88141",
-            "modified": 1657747676655,
-            "created": 1656373501719,
-            "url": "{{ _.base_url }}/users/",
-            "name": "Get users list",
+            "modified": 1658070027059,
+            "created": 1658052556495,
+            "url": "{{ _.base_url }}/users/62b5e88ba6e78636d6488647/expenses",
+            "name": "Get Expenses by id User",
             "description": "",
             "method": "GET",
             "body": {},
             "parameters": [],
             "headers": [],
             "authentication": {},
-            "metaSortKey": -1656373501719,
+            "metaSortKey": -1658052556495,
             "isPrivate": false,
             "settingStoreCookies": true,
             "settingSendCookies": true,
@@ -50,6 +50,29 @@
             "_type": "workspace"
         },
         {
+            "_id": "req_0c396709bf3e459db7fde7b27ce75374",
+            "parentId": "fld_58aefee9d33d4b118999362d14d88141",
+            "modified": 1657747676655,
+            "created": 1656373501719,
+            "url": "{{ _.base_url }}/users/",
+            "name": "Get users list",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [],
+            "headers": [],
+            "authentication": {},
+            "metaSortKey": -1656373501719,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
             "_id": "req_46037749e8df4251aeb1c0216aeb9b5a",
             "parentId": "fld_58aefee9d33d4b118999362d14d88141",
             "modified": 1657747754046,
@@ -75,7 +98,7 @@
         {
             "_id": "req_429286445bf742d4ae84589b8b1e8663",
             "parentId": "fld_58aefee9d33d4b118999362d14d88141",
-            "modified": 1657747733678,
+            "modified": 1658175287003,
             "created": 1657747252751,
             "url": "{{ _.base_url }}/users/",
             "name": "Add user",
@@ -107,7 +130,7 @@
         {
             "_id": "req_9eb19b3b91b2463e9b2d83c3e7fe1222",
             "parentId": "fld_58aefee9d33d4b118999362d14d88141",
-            "modified": 1657747737989,
+            "modified": 1658057416133,
             "created": 1657747589131,
             "url": "{{ _.base_url }}/users/62cf38a0169ef7ddc65e3cb5/",
             "name": "Edit user by id",
@@ -220,7 +243,7 @@
         {
             "_id": "req_075efe92e73f42ba931928c0488d8e97",
             "parentId": "fld_88da7c301417447c92821079a507117e",
-            "modified": 1657747902263,
+            "modified": 1658175292722,
             "created": 1657382559371,
             "url": "{{ _.base_url }}/groups/",
             "name": "Add group & update users",
@@ -252,7 +275,7 @@
         {
             "_id": "req_8d8a643e1d85445390a411c465fe3d99",
             "parentId": "fld_88da7c301417447c92821079a507117e",
-            "modified": 1657748012914,
+            "modified": 1658175289871,
             "created": 1657458666135,
             "url": "{{ _.base_url }}/groups/62cacfce8cb7a75c20d8bb95/",
             "name": "Edit group & users",
@@ -423,7 +446,7 @@
         {
             "_id": "req_8a54dd3aa24c470abb3647d46299ded1",
             "parentId": "fld_54b87ae9138a4a9d85e73007d1130248",
-            "modified": 1657748451379,
+            "modified": 1658178902600,
             "created": 1657497147033,
             "url": "{{ _.base_url }}/expenses/",
             "name": "Add expense & update group",
@@ -443,6 +466,70 @@
             ],
             "authentication": {},
             "metaSortKey": -1656813986126.25,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_401a18d7c743455d8f050e16cc34ce59",
+            "parentId": "fld_54b87ae9138a4a9d85e73007d1130248",
+            "modified": 1658178904762,
+            "created": 1658176599731,
+            "url": "{{ _.base_url }}/expenses/62b9d8d13b031c174dc38fa1/payments",
+            "name": "Delete a payment",
+            "description": "",
+            "method": "DELETE",
+            "body": {
+                "mimeType": "application/json",
+                "text": "\t{\n\t\t\t \"_id\": \"62d5c2d1ddf2f121b4981689\"\n\t} \n"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_72794f0561804f8fa27e5224c6c138f0"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1656813986101.25,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_b72ce01eb97c40878b886a68a20ae604",
+            "parentId": "fld_54b87ae9138a4a9d85e73007d1130248",
+            "modified": 1658178944981,
+            "created": 1658174978733,
+            "url": "{{ _.base_url }}/expenses/62b9d8d13b031c174dc38fa1/payments",
+            "name": "Update -add payments",
+            "description": "",
+            "method": "PUT",
+            "body": {
+                "mimeType": "application/json",
+                "text": "\t{\n\t\t\t \"date\": \"2022-01-01T08:00:00.000+00:00\",\n\t\t\t \"note\": \"Primer pago parcial\",\n\t\t\t \"userFromId\": \"62b5e88ba6e78636d6488646\",\n\t\t\t \"userToId\": \"62b5e88ba6e78636d6488645\",\n\t\t\t \"quantity\": 30\n\t} \n"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_73adc99f71c74eecb305817cd2adcafd"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1656813986076.25,
             "isPrivate": false,
             "settingStoreCookies": true,
             "settingSendCookies": true,
@@ -477,9 +564,9 @@
         {
             "_id": "spc_90282007223248dab4e60a40322d9917",
             "parentId": "wrk_7e9d55a3a593484a8dd6bd5f475a6011",
-            "modified": 1657747059970,
+            "modified": 1658004567602,
             "created": 1656373501709,
-            "fileName": "New Document",
+            "fileName": "Shared_expenses",
             "contents": "",
             "contentType": "yaml",
             "_type": "api_spec"
