@@ -8,5 +8,6 @@ router.put("/:id", groupControllers.updateOne);
 router.post("/", groupControllers.createGroupUser);
 
 router.delete("/:idUser", groupControllers.deleteOne);
+router.get("/:id/expenses", groupControllers.expensesInGroup);
 
 module.exports = router;

@@ -5,7 +5,6 @@ const Group = require("../group/group.model");
 const mongoose = require("mongoose");
 
 const findMany = async (req, res) => {
-  const { id } = req.params;
   try {
     const docs = await Expense.find()
       .populate("users.userId", "name email")
@@ -33,13 +32,13 @@ const createOne = async (req, res) => {
         .json({ error: "Cannot create expense. Some users do not exist" });
     }
 
-    // Crear gasto
+    // Crear el gasto
     const newExpense = await Expense.create(req.body);
     if (!newExpense) {
       return res.status(500).json({ error: "Cannot create the expense" });
     }
 
-    // Actualizar gasto en la colección groups
+    // Actualizar el gasto en la colección groups
     const { groupId } = req.body;
     const expenses = [
       {
@@ -148,6 +147,7 @@ const deletePayments = async (req, res) => {
 const deleteOne = async (req, res) => {
   const { id } = req.params;
   try {
+    // Verificar si el gasto posee pagos asociados
     const doc = await Expense.find({
       _id: id,
       $expr: {
@@ -159,8 +159,27 @@ const deleteOne = async (req, res) => {
         .status(500)
         .json({ error: "Cannot delete. This expense contains payments" });
     }
-    //Falta eliminar este expense en el grupo correspondiente
+
+    // Eliminar el gasto en la colección groups
+    const deleteInGroup = await Group.updateMany(
+      {},
+      {
+        $pull: {
+          expenses: { expenseId: id },
+        },
+      }
+    );
+    if (!deleteInGroup) {
+      return res
+        .status(500)
+        .json({ error: "Cannot delete this expense in Groups collection" });
+    }
+
+    // Eliminar el gasto en la colección expenses
     const toDelete = await Expense.findOneAndDelete({ _id: id }, { new: true });
+    if (!toDelete) {
+      return res.status(500).json({ error: "Not found" });
+    }
     res.status(200).json({ results: [toDelete] });
   } catch (error) {
     res.status(500).json({ error: "Cannot delete" });

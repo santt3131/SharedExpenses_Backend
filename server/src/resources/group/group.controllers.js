@@ -9,7 +9,15 @@ const findMany = async (req, res) => {
       .exec();
     res.status(200).json({ results: docs });
   } catch (error) {
-    console.log(e);
+    res.status(500).json({ error: "Internal error" });
+  }
+};
+
+const expensesInGroup = async (req, res) => {
+  try {
+    const docs = await Group.find({}, { expenses: 1, _id: 0 });
+    res.status(200).json({ results: docs });
+  } catch (error) {
     res.status(500).json({ error: "Internal error" });
   }
 };
@@ -147,4 +155,5 @@ module.exports = {
   updateOne,
   deleteOne,
   createGroupUser,
+  expensesInGroup,
 };
