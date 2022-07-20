@@ -1,38 +1,41 @@
-[{
-  "_id": {
-    "$oid": "62b737d75163f4de8bc0c006"
-  },
-  "groupName": "Viaje a Francia",
-  "groupDescription": "Mis vacaciones del 2022",
-  "expenses": [
-    {
-      "expenseId": "62b9d8d13b031c174dc38fa1",
-      "expenseTitle": "Restaurante La Mancha"
+[
+  {
+    "_id": {
+      "$oid": "62b737d75163f4de8bc0c006"
     },
-    {
-      "expenseId": "62ba4cca761a3641682693e8",
-      "expenseTitle": "COmpra de boleto"
-    }
-  ],
-  "users": [
-    "62b5e88ba6e78636d6488645",
-    "62b5e88ba6e78636d6488646",
-    "62b5e88ba6e78636d6488647"
-  ]
-},{
-  "_id": {
-    "$oid": "62b7383f5163f4de8bc0c007"
+    "groupName": "Viaje a Francia",
+    "groupDescription": "Mis vacaciones del 2022",
+    "expenses": [
+      {
+        "expenseId": "62b9d8d13b031c174dc38fa1",
+        "expenseTitle": "Restaurante La Mancha"
+      },
+      {
+        "expenseId": "62ba4cca761a3641682693e8",
+        "expenseTitle": "Compra de boleto"
+      }
+    ],
+    "users": [
+      "62b5e88ba6e78636d6488645",
+      "62b5e88ba6e78636d6488646",
+      "62b5e88ba6e78636d6488647"
+    ]
   },
-  "groupName": "Hotel en Italia",
-  "groupDescription": "Estancia de 3 dias en Italia con amigos",
-  "expenses": [
-    {
-      "expenseId": "62b9ec1e3b031c174dc38fd6",
-      "expenseTitle": "Compra de maleta"
-    }
-  ],
-  "users": [
-    "62b5e88ba6e78636d6488645",
-    "62b5e88ba6e78636d6488646"
-  ]
-}]
+  {
+    "_id": {
+      "$oid": "62b7383f5163f4de8bc0c007"
+    },
+    "groupName": "Hotel en Italia",
+    "groupDescription": "Estancia de 3 dias en Italia con amigos",
+    "expenses": [
+      {
+        "expenseId": "62b9ec1e3b031c174dc38fd6",
+        "expenseTitle": "Compra de maleta"
+      }
+    ],
+    "users": [
+      "62b5e88ba6e78636d6488645",
+      "62b5e88ba6e78636d6488646"
+    ]
+  }
+]
