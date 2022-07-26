@@ -1,5 +1,13 @@
 const User = require("./user.model");
 const Expense = require("../expense/expense.model");
+const { needsAuthToken } = require("./auth/auth.middleware");
+
+const login = async (req, res) => {
+  const loginData = req.body;
+  const token = await users.authenticateUser(loginData);
+  res.status(200).json(token);
+};
+
 
 const findMany = async (req, res) => {
   try {
@@ -101,6 +109,7 @@ const findManyPaymentsTo = async (req, res) => {
 };
 
 module.exports = {
+  login,
   findMany,
   findOne,
   createOne,
