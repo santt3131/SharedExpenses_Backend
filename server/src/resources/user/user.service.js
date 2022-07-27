@@ -12,7 +12,7 @@ const authenticateUser = async ({ email, password }) => {
     errMalformed(`Missing email or password`);
   }
   const user = await User.findOne({ email }).select("+password").lean().exec();
-  if (!user) {
+  if (!user) {  
     errUnauthorized(`Wrong email or password`);
   }
   const passwordMatches = await auth.comparePasswords(password, user.password);

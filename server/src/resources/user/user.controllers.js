@@ -1,8 +1,12 @@
 const User = require("./user.model");
 const Expense = require("../expense/expense.model");
+const { catchErrors, TodosApiError } = require("../errors");
 const { needsAuthToken } = require("./auth/auth.middleware");
+const users = require("./user.service");
+const config = require("../config");
 
-const login = async (req, res) => {
+const login = async (req, res) => {const users = require("./user.service");
+const config = require("../config");
   const loginData = req.body;
   const token = await users.authenticateUser(loginData);
   res.status(200).json(token);
