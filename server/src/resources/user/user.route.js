@@ -5,7 +5,7 @@ const loginControllers = require("../login/login.controllers");
 const router = Router();
 
 router.post("/", userControllers.createOne);
-router.post("/", loginControllers.login);
+//router.post("/", loginControllers.login);
 router.get("/", userControllers.findMany);
 router.get("/:id", userControllers.findOne);
 //router.get("/:email", userControllers.findOneByEmail);

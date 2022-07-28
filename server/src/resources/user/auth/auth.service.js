@@ -2,7 +2,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const config = require('../../../config');
-//const { errUnauthorized } = require('../../errors');
+const { errUnauthorized } = require('../../../errors');
 
 const encryptPassword = async (password) => {
   const salt = await bcrypt.genSalt();
@@ -10,7 +10,7 @@ const encryptPassword = async (password) => {
 }
 
 const comparePasswords = async (password, dbPassword) => {
-  return bcrypt.compare(password, dbPassword);
+return bcrypt.compare(password, dbPassword);
 }
 
 const createToken = (email) => {

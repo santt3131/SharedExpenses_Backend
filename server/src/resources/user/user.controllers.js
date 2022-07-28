@@ -1,8 +1,10 @@
 const User = require("./user.model");
 const Expense = require("../expense/expense.model");
+const Auth = require("../user/auth/auth.service");
+const users = require("./user.service");
 const { catchErrors, TodosApiError } = require("../../errors");
 const { needsAuthToken } = require("../user/auth/auth.middleware");
-const users = require("./user.service");
+
 //const config = require("../config");
 
 
@@ -50,7 +52,18 @@ const createOne = async (req, res) => {
   try {
     const newUser = req.body;
     console.log("new User es", newUser);
-    const doc = await User.create(newUser);
+
+    /******************************************** */
+    const encryptedPassword = await Auth.encryptPassword(newUser.password);
+    const newdata=[
+      {
+           "name":newUser.name,
+            "email":newUser.email,
+            "password":encryptedPassword,
+       }
+   ]
+    /******************************************** */
+    const doc = await User.create( newdata);
     console.log("doc es ", doc);
     res.status(201).json({ results: [doc] });
   } catch (error) {
@@ -58,6 +71,12 @@ const createOne = async (req, res) => {
     res.status(500).json({ error: " Creation failed" });
   }
 };
+
+
+const createUser = async ({name, email, password: plaintextPassword }) => {
+  //const encryptedPassword = await Auth.encryptPassword(plaintextPassword);
+  return await User.create({name, email, password: plaintextPassword });
+}
 
 const updateOne = async (req, res) => {
   const { id } = req.params;
@@ -130,4 +149,5 @@ module.exports = {
   findManyPaymentsFrom,
   findManyPaymentsTo,
   findOneByEmail,
+  createUser,
 };
