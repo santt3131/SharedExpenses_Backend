@@ -1,16 +1,10 @@
 const User = require("./user.model");
 const Expense = require("../expense/expense.model");
-const { catchErrors, TodosApiError } = require("../errors");
-const { needsAuthToken } = require("./auth/auth.middleware");
+const { catchErrors, TodosApiError } = require("../../errors");
+const { needsAuthToken } = require("../user/auth/auth.middleware");
 const users = require("./user.service");
-const config = require("../config");
+//const config = require("../config");
 
-const login = async (req, res) => {const users = require("./user.service");
-const config = require("../config");
-  const loginData = req.body;
-  const token = await users.authenticateUser(loginData);
-  res.status(200).json(token);
-};
 
 
 const findMany = async (req, res) => {
@@ -18,7 +12,7 @@ const findMany = async (req, res) => {
     const docs = await User.find().populate("groups").lean().exec();
     res.status(200).json({ results: docs });
   } catch (error) {
-    console.log(e);
+    console.log(error);
     res.status(500).json({ error: "Internal error" });
   }
 };
@@ -32,8 +26,23 @@ const findOne = async (req, res) => {
     }
     res.status(200).json({ results: [doc] });
   } catch (error) {
-    console.log(e);
+    console.log(error);
     res.status(500).json({ error: "Cannot get Cutomer" });
+  }
+};
+
+const findOneByEmail = async (req, res) => {
+  
+  const { email } = req.params;
+  try {
+    const doc = await User.findOne({ _email: email }).populate("groups").exec();
+    if (!doc) {
+      return res.status(400).json({ results: [doc] });
+    }
+    res.status(200).json({ results: [doc] });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Cannot get user email" });
   }
 };
 
@@ -61,7 +70,7 @@ const updateOne = async (req, res) => {
     }
     res.status(200).json({ results: [doc] });
   } catch (error) {
-    console.log(e);
+    console.log(error);
     res.status(500).json({ error: "Cannot update" });
   }
 };
@@ -75,7 +84,7 @@ const deleteOne = async (req, res) => {
     }
     res.status(200).json({ results: [doc] });
   } catch (error) {
-    console.log(e);
+    console.log(error);
     res.status(500).json({ error: "Cannot delete" });
   }
 };
@@ -113,7 +122,6 @@ const findManyPaymentsTo = async (req, res) => {
 };
 
 module.exports = {
-  login,
   findMany,
   findOne,
   createOne,
@@ -121,4 +129,5 @@ module.exports = {
   deleteOne,
   findManyPaymentsFrom,
   findManyPaymentsTo,
+  findOneByEmail,
 };

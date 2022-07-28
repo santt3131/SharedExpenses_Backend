@@ -4,7 +4,8 @@
   "description": "Proyecto para compartir gastos",
   "main": "./src/server.js",
   "scripts": {
-    "dev": "nodemon ."
+    "dev": "nodemon .",
+    "start": "nodemon ./src/server.js"
   },
   "keywords": [
     "api",
@@ -14,9 +15,12 @@
   "author": "Santiago Bruno <santt31@gmail.com>, Ramiro Mejias<ramiro.mejias@gmail.com> ",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "config-js": "^1.1.15",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.3.5",
     "morgan": "^1.10.0"
   },

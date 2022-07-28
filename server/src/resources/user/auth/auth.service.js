@@ -1,8 +1,8 @@
 
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const config = require('../../config');
-const { errUnauthorized } = require('../../errors');
+const config = require('../../../config');
+//const { errUnauthorized } = require('../../errors');
 
 const encryptPassword = async (password) => {
   const salt = await bcrypt.genSalt();
@@ -48,3 +48,4 @@ module.exports = {
   createToken,
   decodeToken,
 }
+

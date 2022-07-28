@@ -1,4 +1,5 @@
-const { errUnauthorized } = require("../../errors");
+
+//const { errUnauthorized } = require("../../errors");
 const auth = require('./auth.service');
 
 const needsAuthToken = async (req, res, next) => {
