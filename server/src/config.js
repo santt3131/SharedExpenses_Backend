@@ -11,4 +11,6 @@ module.exports = {
   MONGO_URL: checkEnvVar("MONGO_URL"),
   JWT_SECRET: checkEnvVar("JWT_SECRET"),
   JWT_EXPIRATION: checkEnvVar("JWT_EXPIRATION"),
+  FRONTEND_DIR: checkEnvVar("FRONTEND_DIR"),
+
 };

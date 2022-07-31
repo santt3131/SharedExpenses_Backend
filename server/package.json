@@ -1,6 +1,7 @@
 {
   "name": "backend-final",
   "version": "0.0.1",
+  "proxy": "http://localhost:19002",
   "description": "Proyecto para compartir gastos",
   "main": "./src/server.js",
   "scripts": {

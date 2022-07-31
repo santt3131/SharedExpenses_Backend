@@ -33,27 +33,10 @@ const findOne = async (req, res) => {
   }
 };
 
-const findOneByEmail = async (req, res) => {
-  
-  const { email } = req.params;
-  try {
-    const doc = await User.findOne({ _email: email }).populate("groups").exec();
-    if (!doc) {
-      return res.status(400).json({ results: [doc] });
-    }
-    res.status(200).json({ results: [doc] });
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: "Cannot get user email" });
-  }
-};
-
 const createOne = async (req, res) => {
   try {
     const newUser = req.body;
     console.log("new User es", newUser);
-
-    /******************************************** */
     const encryptedPassword = await Auth.encryptPassword(newUser.password);
     const newdata=[
       {
@@ -61,8 +44,7 @@ const createOne = async (req, res) => {
             "email":newUser.email,
             "password":encryptedPassword,
        }
-   ]
-    /******************************************** */
+   ]   ;
     const doc = await User.create( newdata);
     console.log("doc es ", doc);
     res.status(201).json({ results: [doc] });
@@ -71,12 +53,6 @@ const createOne = async (req, res) => {
     res.status(500).json({ error: " Creation failed" });
   }
 };
-
-
-const createUser = async ({name, email, password: plaintextPassword }) => {
-  //const encryptedPassword = await Auth.encryptPassword(plaintextPassword);
-  return await User.create({name, email, password: plaintextPassword });
-}
 
 const updateOne = async (req, res) => {
   const { id } = req.params;
@@ -148,6 +124,4 @@ module.exports = {
   deleteOne,
   findManyPaymentsFrom,
   findManyPaymentsTo,
-  findOneByEmail,
-  createUser,
 };

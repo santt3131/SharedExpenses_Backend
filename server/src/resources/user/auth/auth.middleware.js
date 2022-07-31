@@ -13,7 +13,6 @@ const needsAuthToken = async (req, res, next) => {
     }
     const token = header.slice("Bearer ".length);
     const { email } = auth.decodeToken(token);
-    // TODO: opcional: cargar los datos del usuario
     req.userEmail = email;
     next();
   } catch (e) {
