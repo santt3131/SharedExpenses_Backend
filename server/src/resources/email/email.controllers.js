@@ -15,7 +15,7 @@ const transporter = nodemailer.createTransport({
 });
 
 const sendInvitation = async (req, res) => {
-  const { email, message } = req.body;
+  const { name, email, message } = req.body;
 
   try {
     const send = await transporter.sendMail({
