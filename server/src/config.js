@@ -10,4 +10,6 @@ const checkEnvVar = (name) => {
 module.exports = {
   PORT: checkEnvVar("PORT"),
   MONGO_URL: checkEnvVar("MONGO_URL"),
+  EMAIL_USER: checkEnvVar("EMAIL_USER"),
+  EMAIL_PASSWORD: checkEnvVar("EMAIL_PASSWORD"),
 };

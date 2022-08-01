@@ -22,6 +22,9 @@ app.use("/categories", categoryRouter);
 const expenseRouter = require("./resources/expense/expense.route");
 app.use("/expenses", expenseRouter);
 
+const emailRouter = require("./resources/email/email.route");
+app.use("/email", emailRouter);
+
 const startServer = async () => {
   await db.connect();
   app.listen(PORT, () => {
