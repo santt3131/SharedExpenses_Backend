@@ -1,12 +1,20 @@
 const User = require("./user.model");
 const Expense = require("../expense/expense.model");
+const Auth = require("../user/auth/auth.service");
+const users = require("./user.service");
+const { catchErrors, TodosApiError } = require("../../errors");
+const { needsAuthToken } = require("../user/auth/auth.middleware");
+
+//const config = require("../config");
+
+
 
 const findMany = async (req, res) => {
   try {
     const docs = await User.find().populate("groups").lean().exec();
     res.status(200).json({ results: docs });
   } catch (error) {
-    console.log(e);
+    console.log(error);
     res.status(500).json({ error: "Internal error" });
   }
 };
@@ -20,7 +28,7 @@ const findOne = async (req, res) => {
     }
     res.status(200).json({ results: [doc] });
   } catch (error) {
-    console.log(e);
+    console.log(error);
     res.status(500).json({ error: "Cannot get Cutomer" });
   }
 };
@@ -29,7 +37,16 @@ const createOne = async (req, res) => {
   try {
     const newUser = req.body;
     console.log("new User es", newUser);
-    const doc = await User.create(newUser);
+    const encryptedPassword = await Auth.encryptPassword(newUser.password);
+    const newdata=[
+      {
+           "name":newUser.name,
+            "email":newUser.email,
+            "password":encryptedPassword,
+       }
+   ]   ;
+   
+    const doc = await User.create( newdata);
     console.log("doc es ", doc);
     res.status(201).json({ results: [doc] });
   } catch (error) {
@@ -49,7 +66,7 @@ const updateOne = async (req, res) => {
     }
     res.status(200).json({ results: [doc] });
   } catch (error) {
-    console.log(e);
+    console.log(error);
     res.status(500).json({ error: "Cannot update" });
   }
 };
@@ -63,7 +80,7 @@ const deleteOne = async (req, res) => {
     }
     res.status(200).json({ results: [doc] });
   } catch (error) {
-    console.log(e);
+    console.log(error);
     res.status(500).json({ error: "Cannot delete" });
   }
 };

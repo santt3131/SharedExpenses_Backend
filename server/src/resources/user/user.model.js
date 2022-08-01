@@ -17,7 +17,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
       minlength: 9,
-      maxlength: 12,
+      maxlength: 100,
     },
     groups: [
       {
