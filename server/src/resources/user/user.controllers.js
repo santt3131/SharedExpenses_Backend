@@ -45,6 +45,7 @@ const createOne = async (req, res) => {
             "password":encryptedPassword,
        }
    ]   ;
+   
     const doc = await User.create( newdata);
     console.log("doc es ", doc);
     res.status(201).json({ results: [doc] });
