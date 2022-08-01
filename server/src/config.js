@@ -12,5 +12,6 @@ module.exports = {
   JWT_SECRET: checkEnvVar("JWT_SECRET"),
   JWT_EXPIRATION: checkEnvVar("JWT_EXPIRATION"),
   FRONTEND_DIR: checkEnvVar("FRONTEND_DIR"),
-
+  EMAIL_USER: checkEnvVar("EMAIL_USER"),
+  EMAIL_PASSWORD: checkEnvVar("EMAIL_PASSWORD"),
 };

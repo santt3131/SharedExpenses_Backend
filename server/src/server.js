@@ -31,6 +31,8 @@ app.use("/expenses", expenseRouter);
 
 /*app.all("/*", async (req, res, next) => {next(new TodosApiError(404, `Not Found`));
 });*/
+const emailRouter = require("./resources/email/email.route");
+app.use("/email", emailRouter);
 
 const startServer = async () => {
   await db.connect();
