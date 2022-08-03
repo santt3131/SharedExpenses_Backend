@@ -1,8 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
-const { PORT } = require("./config");
-const { FRONTEND_DIR } = require("./config");
+const { PORT,FRONTEND_DIR } = require("./config");
 const db = require("./db");
 const { errorHandler, TodosApiError } = require("./errors");
 

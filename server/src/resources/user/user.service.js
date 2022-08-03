@@ -7,7 +7,6 @@ const { errMalformed, errUnauthorized } = require('../../errors');
 const authenticateUser = async ({ email, password }) => {
   if (!email || !password) {
     errMalformed(`Missing email or password 1`);
-    return 0;
   }
   
   else {
@@ -15,9 +14,7 @@ const authenticateUser = async ({ email, password }) => {
     const user = await User.findOne({ email }).select("+password").lean().exec();
 
     if (!user) {  
-     // console.log("Wrong email or password 2");
       errUnauthorized(`Wrong email or password 2`);
-      return "Wrong email or password 2";
     }
     
     const passwordMatches = await auth.comparePasswords(password, user.password);
