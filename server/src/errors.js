@@ -1,5 +1,5 @@
 
-const config = require('./config');
+/*const config = require('./config');
 
 class TodosApiError extends Error {
   constructor(code, message) {
@@ -43,3 +43,4 @@ module.exports = {
   errMalformed,
   errUnauthorized,
 }; 
+*/

@@ -28,8 +28,8 @@ app.use("/categories", categoryRouter);
 const expenseRouter = require("./resources/expense/expense.route");
 app.use("/expenses", expenseRouter);
 
-/*app.all("/*", async (req, res, next) => {next(new TodosApiError(404, `Not Found`));
-});*/
+app.use("/*", async (req, res, next) => {next(new TodosApiError(404, `Not Found`));
+});
 const emailRouter = require("./resources/email/email.route");
 app.use("/email", emailRouter);
 

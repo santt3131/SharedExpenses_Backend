@@ -20,7 +20,7 @@ const authenticateUser = async ({ email, password }) => {
     const passwordMatches = await auth.comparePasswords(password, user.password);
     if (!passwordMatches) {
       errUnauthorized('wrong password');
-      return 0;
+      return "wrong pass";
     }
     
     const token = auth.createToken(email);
