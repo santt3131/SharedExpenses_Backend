@@ -7,9 +7,16 @@ const { needsAuthToken } = require("../user/auth/auth.middleware");
 
 const login = async (req, res) => {
   const loginData = req.body;
-  const token = await userServices.authenticateUser(loginData);
-  res.status(200).json(token);
+
+  try {
+    const token = await userServices.authenticateUser(loginData);
+    res.status(200).json(token);
+  } catch (e) {
+    console.log(e);
+  }
+
 };
+
 
 module.exports = {
 login,

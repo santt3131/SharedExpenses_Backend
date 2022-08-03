@@ -33,7 +33,7 @@ const errMalformed = (message) => {
 };
 
 const errUnauthorized = (message) => {
-  throw new TodosApiError(401, message);
+ // throw new TodosApiError(401, message);
 };
 
 module.exports = {
