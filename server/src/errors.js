@@ -1,10 +1,10 @@
 
-/*const config = require('./config');
+const config = require('./config');
 
-class TodosApiError extends Error {
+class SEApiError extends Error {
   constructor(code, message) {
     super();
-    this.name = "TodosApiError";
+    this.name = "SEApiError";
     this.code = code;
     this.message = message;
   }
@@ -19,7 +19,7 @@ const catchErrors = (routeHandler) => async (req, res, next, ...args) => {
   };
 
 const errorHandler = (err, req, res, next) => {
-  if (err.name === "TodosApiError") {
+  if (err.name === "SEApiError") {
     const { code, message } = err;
     return res.status(code).send({ error: message });
   }
@@ -29,18 +29,17 @@ const errorHandler = (err, req, res, next) => {
 };
 
 const errMalformed = (message) => {
-  throw new TodosApiError(400, `Bad request: ${message}`);
+  throw new SEApiError(400, `Bad request: ${message}`);
 };
 
 const errUnauthorized = (message) => {
- throw new TodosApiError(401, message);
+ throw new SEApiError(401, message);
 };
 
 module.exports = {
-  TodosApiError,
+  SEApiError,
   catchErrors,
   errorHandler,
   errMalformed,
   errUnauthorized,
 }; 
-*/

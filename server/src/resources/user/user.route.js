@@ -6,7 +6,8 @@ const router = Router();
 
 router.post("/", userControllers.createOne);
 router.get("/", userControllers.findMany);
-router.get("/:id", userControllers.findOne);
+//router.get("/:id", userControllers.findOne);
+router.get("/:email", userControllers.findOneByEmail);
 router.put(":id", userControllers.updateOne);
 router.delete("/:id", userControllers.deleteOne);
 
