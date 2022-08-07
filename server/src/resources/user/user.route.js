@@ -13,6 +13,8 @@ router.delete("/:id", userControllers.deleteOne);
 router.get("/:id/paymentsfrom", userControllers.findManyPaymentsFrom);
 router.get("/:id/paymentsto", userControllers.findManyPaymentsTo);
 
+router.get("/:id/friends", userControllers.findMyFriends);
+
 router.post("/:id", userControllers.deleteOne);
 
 module.exports = router;

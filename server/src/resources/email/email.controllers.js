@@ -1,5 +1,6 @@
 const nodemailer = require("nodemailer");
 const { EMAIL_USER, EMAIL_PASSWORD } = require("../../config");
+const User = require("../user/user.model");
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
@@ -15,19 +16,57 @@ const transporter = nodemailer.createTransport({
 });
 
 const sendInvitation = async (req, res) => {
-  const { name, email, message } = req.body;
+  const { name, email, message, authUser, invitationId } = req.body;
 
   try {
+    // Verificar si ya el amigo existe
+    const friendExist = await User.findOne({
+      _id: authUser,
+      friends: { $elemMatch: { friendEmail: email } },
+    });
+    if (friendExist) {
+      console.log("Friend exists");
+      return res.status(500).json({ error: "Friend already exists" });
+    }
+
+    // Enviar email de invitacion
     const send = await transporter.sendMail({
       from: '"Shared Expenses" <sharedexpenses.europe@gmail.com>', // remitente
       to: email, // destinatario
       subject: "Shared Expenses Invitation", // asunto
       html: message, // cuerpo
     });
-    res.status(200).json({ message: "Email sent successfully" });
+    if (!send) {
+      console.log("Error sending email");
+      return res
+        .status(500)
+        .json({ error: "There was an errors sending email" });
+    }
+
+    // Registrar amigo en la BD
+    const friend = await User.findOneAndUpdate(
+      { _id: authUser },
+      {
+        $push: {
+          friends: {
+            friendId: "",
+            friendName: name,
+            friendEmail: email,
+            invitationId: invitationId,
+          },
+        },
+      },
+      { new: true }
+    );
+    if (!friend) {
+      console.log("Friend adding new friend in BD");
+      return res.status(500).json({ error: "Error adding the new friend" });
+    }
+
+    res.status(200).json({ message: "Invitation sent successfully" });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: "Errors sending email " + error });
+    res.status(500).json({ error: "Errors inviting friends" });
   }
 };
 

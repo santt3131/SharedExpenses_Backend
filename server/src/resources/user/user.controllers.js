@@ -7,8 +7,6 @@ const { needsAuthToken } = require("../user/auth/auth.middleware");
 
 //const config = require("../config");
 
-
-
 const findMany = async (req, res) => {
   try {
     const docs = await User.find().populate("groups").lean().exec();
@@ -38,20 +36,20 @@ const createOne = async (req, res) => {
     const newUser = req.body;
     console.log("new User es", newUser);
     const encryptedPassword = await Auth.encryptPassword(newUser.password);
-    const newdata=[
+    const newdata = [
       {
-           "name":newUser.name,
-            "email":newUser.email,
-            "password":encryptedPassword,
-       }
-   ]   ;
-   
-    const doc = await User.create( newdata);
+        name: newUser.name,
+        email: newUser.email,
+        password: encryptedPassword,
+      },
+    ];
+
+    const doc = await User.create(newdata);
     console.log("doc es ", doc);
     res.status(201).json({ results: [doc] });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: " Creation failed" });
+    res.status(500).json({ error: "Creation failed" });
   }
 };
 
@@ -117,6 +115,20 @@ const findManyPaymentsTo = async (req, res) => {
   }
 };
 
+const findMyFriends = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const doc = await User.findOne({ _id: id }, { friends: 1, _id: 0 });
+    if (!doc) {
+      return res.status(400).json({ results: [doc] });
+    }
+    res.status(200).json({ results: [doc] });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Cannot get friends of this user" });
+  }
+};
+
 module.exports = {
   findMany,
   findOne,
@@ -125,4 +137,5 @@ module.exports = {
   deleteOne,
   findManyPaymentsFrom,
   findManyPaymentsTo,
+  findMyFriends,
 };

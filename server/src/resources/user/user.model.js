@@ -25,6 +25,25 @@ const userSchema = new Schema(
         ref: "Group",
       },
     ],
+    friends: [
+      {
+        friendId: {
+          type: String,
+        },
+        friendName: {
+          type: String,
+          required: true,
+        },
+        friendEmail: {
+          type: String,
+          required: true,
+        },
+        invitationId: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
   },
   { versionKey: false }
 );
