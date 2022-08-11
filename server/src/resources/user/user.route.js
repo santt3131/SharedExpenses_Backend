@@ -14,6 +14,7 @@ router.get("/:id/paymentsfrom", userControllers.findManyPaymentsFrom);
 router.get("/:id/paymentsto", userControllers.findManyPaymentsTo);
 
 router.get("/:id/friends", userControllers.findMyFriends);
+router.delete("/:id/friends", userControllers.deleteFriend);
 
 router.post("/:id", userControllers.deleteOne);
 

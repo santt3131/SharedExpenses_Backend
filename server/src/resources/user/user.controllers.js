@@ -129,6 +129,32 @@ const findMyFriends = async (req, res) => {
   }
 };
 
+const deleteFriend = async (req, res) => {
+  const { id } = req.params;
+  const { email } = req.body;
+
+  // Faltan verificaciones del amigo a eliminar
+
+  try {
+    const doc = await User.findOneAndUpdate(
+      { _id: id },
+      {
+        $pull: {
+          friends: { friendEmail: email },
+        },
+      },
+      { new: true }
+    );
+    if (!doc) {
+      return res.status(404).json({ error: "Friend not found" });
+    }
+    res.status(200).json({ results: [doc] });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Cannot delete this friend" });
+  }
+};
+
 module.exports = {
   findMany,
   findOne,
@@ -138,4 +164,5 @@ module.exports = {
   findManyPaymentsFrom,
   findManyPaymentsTo,
   findMyFriends,
+  deleteFriend,
 };
