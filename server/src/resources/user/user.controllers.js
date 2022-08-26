@@ -129,6 +129,26 @@ const findMyFriends = async (req, res) => {
   }
 };
 
+const findMyActiveFriends = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const doc = await User.findOne(
+      {
+        _id: id,
+        friends: { $elemMatch: { friendId: "" } },
+      },
+      { friends: 1, _id: 0 }
+    );
+    if (!doc) {
+      return res.status(400).json({ results: [doc] });
+    }
+    res.status(200).json({ results: [doc] });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Cannot get friends of this user" });
+  }
+};
+
 const deleteFriend = async (req, res) => {
   const { id } = req.params;
   const { email } = req.body;
@@ -155,6 +175,23 @@ const deleteFriend = async (req, res) => {
   }
 };
 
+const findMyGroups = async (req, res) => {
+  const { id } = req.params;
+  try {
+    //const doc = await User.findOne({ _id: id }, { groups: 1, _id: 0 });
+    const doc = await User.findOne({ _id: id }, { groups: 1, _id: 0 })
+      .populate("groups", "_id groupName groupDescription ownerId")
+      .exec();
+    if (!doc) {
+      return res.status(400).json({ results: [doc] });
+    }
+    res.status(200).json({ results: [doc] });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Cannot get groups of this user" });
+  }
+};
+
 module.exports = {
   findMany,
   findOne,
@@ -165,4 +202,6 @@ module.exports = {
   findManyPaymentsTo,
   findMyFriends,
   deleteFriend,
+  findMyGroups,
+  findMyActiveFriends,
 };
