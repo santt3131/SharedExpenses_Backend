@@ -11,6 +11,19 @@ const findMany = async (req, res) => {
   }
 };
 
+const findManyExpenses = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const docs = await Expense.find({ 'users.userId': id })
+      .lean()
+      .exec();
+    res.status(200).json({ results: docs });
+
+  } catch (error) {
+    res.status(500).send({ error: "Internal error" });
+  }
+};
+
 const findOne = async (req, res) => {
   const { id } = req.params;
   try {
@@ -29,7 +42,16 @@ const createOne = async (req, res) => {
   try {
     const newUser = req.body;
     console.log("new User es", newUser);
-    const doc = await User.create(newUser);
+    const encryptedPassword = await Auth.encryptPassword(newUser.password);
+    const newdata = [
+      {
+        "name": newUser.name,
+        "email": newUser.email,
+        "password": encryptedPassword,
+      }
+    ];
+
+    const doc = await User.create(newdata);
     console.log("doc es ", doc);
     res.status(201).json({ results: [doc] });
   } catch (error) {
@@ -103,6 +125,7 @@ const findManyPaymentsTo = async (req, res) => {
 module.exports = {
   findMany,
   findOne,
+  findManyExpenses,
   createOne,
   updateOne,
   deleteOne,
