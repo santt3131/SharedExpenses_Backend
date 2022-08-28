@@ -42,7 +42,7 @@ const createGroupUser = async (req, res) => {
   try {
     //PASO 1- Verificar que todos los IDs de usuario existan en la coleccion USERS
     friends = req.body.friends;
-    arrayUser = [];
+    arrayUser = [req.body.ownerId];
 
     for (i = 0; i < friends.length; i++) {
       if (friends[i].selected === true) {
@@ -81,7 +81,7 @@ const createGroupUser = async (req, res) => {
     const doc = await User.updateMany(
       {
         _id: {
-          $in: req.body.users,
+          $in: arrayUser,
         },
       },
       {
