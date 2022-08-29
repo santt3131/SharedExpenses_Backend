@@ -51,17 +51,10 @@ const createOne = async (req, res) => {
     const encryptedPassword = await Auth.encryptPassword(newUser.password);
     const newdata = [
       {
-<<<<<<< HEAD
         name: newUser.name,
         email: newUser.email,
         password: encryptedPassword,
-      },
-=======
-        "name": newUser.name,
-        "email": newUser.email,
-        "password": encryptedPassword,
       }
->>>>>>> origin/santi-branch
     ];
 
     const doc = await User.create(newdata);
