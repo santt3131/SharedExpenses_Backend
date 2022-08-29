@@ -40,8 +40,15 @@ const findOne = async (req, res) => {
 
 const createGroupUser = async (req, res) => {
   try {
-    //PASO 1- Verificar que los ids users existan en la coleccion USERS
-    const arrayUser = req.body.users;
+    //PASO 1- Verificar que todos los IDs de usuario existan en la coleccion USERS
+    friends = req.body.friends;
+    arrayUser = [req.body.ownerId];
+
+    for (i = 0; i < friends.length; i++) {
+      if (friends[i].selected === true) {
+        arrayUser.push(friends[i].friendId);
+      }
+    }
 
     let isArrayuserInUserCollection = await User.find({
       _id: {
@@ -53,11 +60,17 @@ const createGroupUser = async (req, res) => {
     if (isArrayuserInUserCollection.length !== arrayUser.length) {
       return res
         .status(500)
-        .json({ error: "Cannot update, some User id was not found" });
+        .json({ error: "Cannot update, some user IDs were not found" });
     }
 
     //PASO 2- Creo el grupo
-    const groupNew = await Group.create(req.body);
+    const gr = {
+      groupName: req.body.groupName,
+      groupDescription: req.body.groupDescription,
+      ownerId: req.body.ownerId,
+      users: arrayUser,
+    };
+    const groupNew = await Group.create(gr);
 
     if (!groupNew) {
       return res.status(500).json({ error: "Group was not created" });
@@ -68,7 +81,7 @@ const createGroupUser = async (req, res) => {
     const doc = await User.updateMany(
       {
         _id: {
-          $in: req.body.users,
+          $in: arrayUser,
         },
       },
       {
@@ -82,13 +95,13 @@ const createGroupUser = async (req, res) => {
     );
 
     if (!doc) {
-      return res.status(404).json({ error: "Not found" });
+      return res.status(404).json({ error: "Cannot update users groups" });
     }
 
     res.status(201).json({ results: "Group was created with its users" });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: "Cannot update" });
+    res.status(500).json({ error: "Cannot create the group" });
   }
 };
 
