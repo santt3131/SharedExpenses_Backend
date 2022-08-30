@@ -1,175 +1,217 @@
-[
-  {
-    "_id": {
-      "$oid": "62b9d8d13b031c174dc38fa1"
-    },
-    "categoryId": "62b9d9eb355700006d004aa2",
-    "date": {
-      "$date": {
-        "$numberLong": "981014400000"
-      }
-    },
-    "note": "Una excelente salida",
-    "title": "Restaurante La Mancha",
-    "expenseTotal": {
-      "$numberDecimal": "120"
-    },
-    "users": [
-      {
-        "userId": {
-          "$oid": "62b5e88ba6e78636d6488645"
-        },
-        "debt": {
-          "$numberDecimal": "0"
-        },
-        "paid": {
-          "$numberDecimal": "100"
-        }
-      },
-      {
-        "userId": {
-          "$oid": "62b5e88ba6e78636d6488646"
-        },
-        "debt": {
-          "$numberDecimal": "40"
-        },
-        "paid": {
-          "$numberDecimal": "20"
-        }
-      },
-      {
-        "userId": {
-          "$oid": "62b5e88ba6e78636d6488647"
-        },
-        "debt": {
-          "$numberDecimal": "0"
-        },
-        "paid": {
-          "$numberDecimal": "0"
-        }
-      }
-    ],
-    "payments": [
-      {
-        "date": {
-          "$date": {
-            "$numberLong": "1641024000000"
-          }
-        },
-        "note": "Primer pago parcial",
-        "userFromId": "62b5e88ba6e78636d6488646",
-        "userToId": "62b5e88ba6e78636d6488645",
-        "quantity": {
-          "$numberDecimal": "30"
-        },
-        "_id": {
-          "$oid": "62d5cca37e5d4cd5e36d1644"
-        }
-      },
-      {
-        "date": {
-          "$date": {
-            "$numberLong": "1641110400000"
-          }
-        },
-        "note": "Segundo pago parcial",
-        "userFromId": "62b5e88ba6e78636d6488646",
-        "userToId": "62b5e88ba6e78636d6488645",
-        "quantity": {
-          "$numberDecimal": "10"
-        },
-        "_id": {
-          "$oid": "62d5ccb77e5d4cd5e36d1646"
-        }
-      }
-    ]
+[{
+  "_id": {
+    "$oid": "62b9d8d13b031c174dc38fa1"
   },
-  {
-    "_id": {
-      "$oid": "62b9ec1e3b031c174dc38fd6"
-    },
-    "categoryId": "62b9da0d355700006d004aa5",
-    "date": {
-      "$date": {
-        "$numberLong": "981014400000"
+  "categoryId": "62b9d9eb355700006d004aa2",
+  "date": {
+    "$date": {
+      "$numberLong": "981014400000"
+    }
+  },
+  "note": "Una excelente salida",
+  "title": "Restaurante La Mancha",
+  "expenseTotal": {
+    "$numberDecimal": "120"
+  },
+  "users": [
+    {
+      "userId": {
+        "$oid": "62b5e88ba6e78636d6488645"
+      },
+      "debt": {
+        "$numberDecimal": "0"
+      },
+      "paid": {
+        "$numberDecimal": "100"
+      },
+      "amountShouldPay": {
+        "$numberDecimal": "60"
       }
     },
-    "note": "",
-    "title": "Compra de maleta",
-    "expenseTotal": {
-      "$numberDecimal": "160"
+    {
+      "userId": {
+        "$oid": "62b5e88ba6e78636d6488646"
+      },
+      "debt": {
+        "$numberDecimal": "40"
+      },
+      "paid": {
+        "$numberDecimal": "20"
+      },
+      "amountShouldPay": {
+        "$numberDecimal": "60"
+      }
     },
-    "users": [
-      {
-        "userId": {
-          "$oid": "62b5e88ba6e78636d6488645"
-        },
-        "debt": {
-          "$numberDecimal": "10"
-        },
-        "paid": {
-          "$numberDecimal": "60"
+    {
+      "userId": {
+        "$oid": "62b5e88ba6e78636d6488647"
+      },
+      "debt": {
+        "$numberDecimal": "0"
+      },
+      "paid": {
+        "$numberDecimal": "0"
+      },
+      "amountShouldPay": {
+        "$numberDecimal": "0"
+      }
+    }
+  ],
+  "payments": [
+    {
+      "date": {
+        "$date": {
+          "$numberLong": "1641024000000"
         }
       },
-      {
-        "userId": {
-          "$oid": "62b5e88ba6e78636d6488646"
-        },
-        "debt": {
-          "$numberDecimal": "0"
-        },
-        "paid": {
-          "$numberDecimal": "100"
-        }
+      "note": "Primer pago parcial",
+      "userFromId": "62b5e88ba6e78636d6488646",
+      "userToId": "62b5e88ba6e78636d6488645",
+      "quantity": {
+        "$numberDecimal": "30"
+      },
+      "_id": {
+        "$oid": "62d5cca37e5d4cd5e36d1644"
       }
-    ],
-    "payments": []
+    },
+    {
+      "date": {
+        "$date": {
+          "$numberLong": "1641110400000"
+        }
+      },
+      "note": "Segundo pago parcial",
+      "userFromId": "62b5e88ba6e78636d6488646",
+      "userToId": "62b5e88ba6e78636d6488645",
+      "quantity": {
+        "$numberDecimal": "10"
+      },
+      "_id": {
+        "$oid": "62d5ccb77e5d4cd5e36d1646"
+      }
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "62b9ec1e3b031c174dc38fd6"
   },
-  {
-    "_id": {
-      "$oid": "62ba4cca761a3641682693e8"
-    },
-    "categoryId": "62b9da08355700006d004aa4",
-    "date": {
-      "$date": {
-        "$numberLong": "981014400000"
+  "categoryId": "62b9da0d355700006d004aa5",
+  "date": {
+    "$date": {
+      "$numberLong": "981014400000"
+    }
+  },
+  "note": "",
+  "title": "Compra de maleta",
+  "expenseTotal": {
+    "$numberDecimal": "160"
+  },
+  "users": [
+    {
+      "userId": {
+        "$oid": "62b5e88ba6e78636d6488645"
+      },
+      "debt": {
+        "$numberDecimal": "10"
+      },
+      "paid": {
+        "$numberDecimal": "60"
+      },
+      "amountShouldPay": {
+        "$numberDecimal": "70"
       }
     },
-    "note": "Viajamos en IBERIA",
-    "title": "Compra de boleto",
-    "expenseTotal": {
-      "$numberDecimal": "300"
+    {
+      "userId": {
+        "$oid": "62b5e88ba6e78636d6488646"
+      },
+      "debt": {
+        "$numberDecimal": "0"
+      },
+      "paid": {
+        "$numberDecimal": "100"
+      },
+      "amountShouldPay": {
+        "$numberDecimal": "70"
+      }
+    }
+  ],
+  "payments": []
+},{
+  "_id": {
+    "$oid": "62ba4cca761a3641682693e8"
+  },
+  "categoryId": "62b9da08355700006d004aa4",
+  "date": {
+    "$date": {
+      "$numberLong": "981014400000"
+    }
+  },
+  "note": "Viajamos en IBERIA",
+  "title": "Compra de boleto",
+  "expenseTotal": {
+    "$numberDecimal": "300"
+  },
+  "users": [
+    {
+      "userId": {
+        "$oid": "62b5e88ba6e78636d6488647"
+      },
+      "debt": {
+        "$numberDecimal": "0"
+      },
+      "paid": {
+        "$numberDecimal": "300"
+      },
+      "amountShouldPay": {
+        "$numberDecimal": "100"
+      }
     },
-    "users": [
-      {
-        "userId": {
-          "$oid": "62b5e88ba6e78636d6488647"
-        },
-        "debt": {
-          "$numberDecimal": "0"
-        },
-        "paid": {
-          "$numberDecimal": "300"
+    {
+      "userId": {
+        "$oid": "62b5e88ba6e78636d6488646"
+      },
+      "debt": {
+        "$numberDecimal": "100"
+      },
+      "paid": {
+        "$numberDecimal": "0"
+      },
+      "amountShouldPay": {
+        "$numberDecimal": "100"
+      }
+    },
+    {
+      "userId": {
+        "$oid": "62b5e88ba6e78636d6488645"
+      },
+      "debt": {
+        "$numberDecimal": "100"
+      },
+      "paid": {
+        "$numberDecimal": "0"
+      },
+      "amountShouldPay": {
+        "$numberDecimal": "100"
+      }
+    }
+  ],
+  "payments": [
+    {
+      "date": {
+        "$date": {
+          "$numberLong": "1641110400000"
         }
+      },
+      "note": "Pago completo",
+      "userFromId": "62b5e88ba6e78636d6488645",
+      "userToId": "62b5e88ba6e78636d6488647",
+      "quantity": {
+        "$numberDecimal": "100"
+      },
+      "_id": {
+        "$oid": "62d5cd3f7e5d4cd5e36d164a"
       }
-    ],
-    "payments": [
-      {
-        "date": {
-          "$date": {
-            "$numberLong": "1641110400000"
-          }
-        },
-        "note": "Pago completo",
-        "userFromId": "62b5e88ba6e78636d6488645",
-        "userToId": "62b5e88ba6e78636d6488647",
-        "quantity": {
-          "$numberDecimal": "100"
-        },
-        "_id": {
-          "$oid": "62d5cd3f7e5d4cd5e36d164a"
-        }
-      }
-    ]
-  }
-]
+    }
+  ]
+}]

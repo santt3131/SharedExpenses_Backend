@@ -99,14 +99,14 @@ const updateOne = async (req, res) => {
 
 const addPayments = async (req, res) => {
   const { id } = req.params;
-  console.log('los pagos son', req.body);
+  console.log("los pagos son", req.body);
   try {
     const doc = await Expense.findOneAndUpdate(
       { _id: id },
       {
         $push: {
-          payments: req.body
-        }
+          payments: req.body,
+        },
       },
       { new: true }
     );
@@ -130,10 +130,11 @@ const deletePayments = async (req, res) => {
       { _id: id },
       {
         $pull: {
-          payments: { _id: idPayment }
+          payments: { _id: idPayment },
         },
       },
-      { new: true });
+      { new: true }
+    );
     if (!doc) {
       return res.status(404).json({ error: "Not found" });
     }

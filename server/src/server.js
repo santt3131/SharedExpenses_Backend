@@ -10,6 +10,9 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 
+const loginRouter = require("./resources/login/login.route");
+app.use("/login", loginRouter);
+
 const userRouter = require("./resources/user/user.route");
 app.use("/users", userRouter);
 
@@ -21,6 +24,9 @@ app.use("/categories", categoryRouter);
 
 const expenseRouter = require("./resources/expense/expense.route");
 app.use("/expenses", expenseRouter);
+
+const emailRouter = require("./resources/email/email.route");
+app.use("/email", emailRouter);
 
 const startServer = async () => {
   await db.connect();

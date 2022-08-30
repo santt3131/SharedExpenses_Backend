@@ -13,6 +13,10 @@ const groupSchema = new Schema(
       required: true,
       maxlength: 100,
     },
+    ownerId: {
+      type: String,
+      required: true,
+    },
     users: [
       {
         type: Schema.Types.ObjectId,
