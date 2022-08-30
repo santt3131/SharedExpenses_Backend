@@ -23,6 +23,9 @@
       },
       "paid": {
         "$numberDecimal": "100"
+      },
+      "amountShouldPay": {
+        "$numberDecimal": "60"
       }
     },
     {
@@ -34,6 +37,9 @@
       },
       "paid": {
         "$numberDecimal": "20"
+      },
+      "amountShouldPay": {
+        "$numberDecimal": "60"
       }
     },
     {
@@ -44,6 +50,9 @@
         "$numberDecimal": "0"
       },
       "paid": {
+        "$numberDecimal": "0"
+      },
+      "amountShouldPay": {
         "$numberDecimal": "0"
       }
     }
@@ -107,6 +116,9 @@
       },
       "paid": {
         "$numberDecimal": "60"
+      },
+      "amountShouldPay": {
+        "$numberDecimal": "70"
       }
     },
     {
@@ -118,6 +130,9 @@
       },
       "paid": {
         "$numberDecimal": "100"
+      },
+      "amountShouldPay": {
+        "$numberDecimal": "70"
       }
     }
   ],
@@ -147,6 +162,9 @@
       },
       "paid": {
         "$numberDecimal": "300"
+      },
+      "amountShouldPay": {
+        "$numberDecimal": "100"
       }
     },
     {
@@ -158,6 +176,9 @@
       },
       "paid": {
         "$numberDecimal": "0"
+      },
+      "amountShouldPay": {
+        "$numberDecimal": "100"
       }
     },
     {
@@ -169,6 +190,9 @@
       },
       "paid": {
         "$numberDecimal": "0"
+      },
+      "amountShouldPay": {
+        "$numberDecimal": "100"
       }
     }
   ],
