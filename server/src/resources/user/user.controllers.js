@@ -1,12 +1,18 @@
 const User = require("./user.model");
 const Expense = require("../expense/expense.model");
+const Auth = require("../user/auth/auth.service");
+const users = require("./user.service");
+const { catchErrors, TodosApiError } = require("../../errors");
+const { needsAuthToken } = require("../user/auth/auth.middleware");
+
+//const config = require("../config");
 
 const findMany = async (req, res) => {
   try {
     const docs = await User.find().populate("groups").lean().exec();
     res.status(200).json({ results: docs });
   } catch (error) {
-    console.log(e);
+    console.log(error);
     res.status(500).json({ error: "Internal error" });
   }
 };
@@ -33,7 +39,7 @@ const findOne = async (req, res) => {
     }
     res.status(200).json({ results: [doc] });
   } catch (error) {
-    console.log(e);
+    console.log(error);
     res.status(500).json({ error: "Cannot get Cutomer" });
   }
 };
@@ -45,9 +51,9 @@ const createOne = async (req, res) => {
     const encryptedPassword = await Auth.encryptPassword(newUser.password);
     const newdata = [
       {
-        "name": newUser.name,
-        "email": newUser.email,
-        "password": encryptedPassword,
+        name: newUser.name,
+        email: newUser.email,
+        password: encryptedPassword,
       }
     ];
 
@@ -56,7 +62,7 @@ const createOne = async (req, res) => {
     res.status(201).json({ results: [doc] });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: " Creation failed" });
+    res.status(500).json({ error: "Creation failed" });
   }
 };
 
@@ -71,7 +77,7 @@ const updateOne = async (req, res) => {
     }
     res.status(200).json({ results: [doc] });
   } catch (error) {
-    console.log(e);
+    console.log(error);
     res.status(500).json({ error: "Cannot update" });
   }
 };
@@ -85,7 +91,7 @@ const deleteOne = async (req, res) => {
     }
     res.status(200).json({ results: [doc] });
   } catch (error) {
-    console.log(e);
+    console.log(error);
     res.status(500).json({ error: "Cannot delete" });
   }
 };
@@ -122,6 +128,83 @@ const findManyPaymentsTo = async (req, res) => {
   }
 };
 
+const findMyFriends = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const doc = await User.findOne({ _id: id }, { friends: 1, _id: 0 });
+    if (!doc) {
+      return res.status(400).json({ results: [doc] });
+    }
+    res.status(200).json({ results: [doc] });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Cannot get friends of this user" });
+  }
+};
+
+const findMyActiveFriends = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const doc = await User.findOne(
+      {
+        _id: id,
+        friends: { $elemMatch: { friendId: "" } },
+      },
+      { friends: 1, _id: 0 }
+    );
+    if (!doc) {
+      return res.status(400).json({ results: [doc] });
+    }
+    res.status(200).json({ results: [doc] });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Cannot get friends of this user" });
+  }
+};
+
+const deleteFriend = async (req, res) => {
+  const { id } = req.params;
+  const { email } = req.body;
+
+  // Faltan verificaciones del amigo a eliminar
+
+  try {
+    const doc = await User.findOneAndUpdate(
+      { _id: id },
+      {
+        $pull: {
+          friends: { friendEmail: email },
+        },
+      },
+      { new: true }
+    );
+    if (!doc) {
+      return res.status(404).json({ error: "Friend not found" });
+    }
+    res.status(200).json({ results: [doc] });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Cannot delete this friend" });
+  }
+};
+
+const findMyGroups = async (req, res) => {
+  const { id } = req.params;
+  try {
+    //const doc = await User.findOne({ _id: id }, { groups: 1, _id: 0 });
+    const doc = await User.findOne({ _id: id }, { groups: 1, _id: 0 })
+      .populate("groups", "_id groupName groupDescription ownerId")
+      .exec();
+    if (!doc) {
+      return res.status(400).json({ results: [doc] });
+    }
+    res.status(200).json({ results: [doc] });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Cannot get groups of this user" });
+  }
+};
+
 module.exports = {
   findMany,
   findOne,
@@ -131,4 +214,8 @@ module.exports = {
   deleteOne,
   findManyPaymentsFrom,
   findManyPaymentsTo,
+  findMyFriends,
+  deleteFriend,
+  findMyGroups,
+  findMyActiveFriends,
 };

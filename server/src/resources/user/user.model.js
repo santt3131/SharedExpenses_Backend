@@ -17,12 +17,31 @@ const userSchema = new Schema(
       type: String,
       required: true,
       minlength: 9,
-      maxlength: 12,
+      maxlength: 100,
     },
     groups: [
       {
         type: Schema.Types.ObjectId,
         ref: "Group",
+      },
+    ],
+    friends: [
+      {
+        friendId: {
+          type: String,
+        },
+        friendName: {
+          type: String,
+          required: true,
+        },
+        friendEmail: {
+          type: String,
+          required: true,
+        },
+        invitationId: {
+          type: String,
+          required: true,
+        },
       },
     ],
   },

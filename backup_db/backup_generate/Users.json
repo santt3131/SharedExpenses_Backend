@@ -1,37 +1,161 @@
-[
-  {
-    "_id": {
-      "$oid": "62b5e88ba6e78636d6488645"
-    },
-    "name": "Santiago Bruno",
-    "email": "santt31@gmail.com",
-    "password": "Password.123",
-    "groups": [
-      "62b737d75163f4de8bc0c006",
-      "62b7383f5163f4de8bc0c007"
-    ]
+[{
+  "_id": {
+    "$oid": "62b5e88ba6e78636d6488645"
   },
-  {
-    "_id": {
-      "$oid": "62b5e88ba6e78636d6488646"
+  "name": "Santiago Bruno",
+  "email": "santt31@gmail.com",
+  "password": "Password.123",
+  "groups": [
+    {
+      "$oid": "62b737d75163f4de8bc0c006"
     },
-    "name": "Ramiro Mejías",
-    "email": "ramiro.mejias@gmail.com",
-    "password": "Password.123",
-    "groups": [
-      "62b737d75163f4de8bc0c006",
-      "62b7383f5163f4de8bc0c007"
-    ]
+    {
+      "$oid": "62b7383f5163f4de8bc0c007"
+    }
+  ],
+  "friends": [
+    {
+      "friendId": "",
+      "friendName": "Primer Amigo",
+      "friendEmail": "primeramigo@gmail.com",
+      "invitationId": "Hg67TG"
+    },
+    {
+      "friendId": "",
+      "friendName": "Segundo Amigo",
+      "friendEmail": "segundoamigo@gmail.com",
+      "invitationId": "YU7FD9"
+    },
+    {
+      "friendId": "62b5e88ba6e78636d6488646",
+      "friendName": "Ramiro Mejías",
+      "friendEmail": "ramiro.mejias@gmail.com",
+      "invitationId": ""
+    },
+    {
+      "friendId": "62b5e88ba6e78636d6488647",
+      "friendName": "Maria Pérez",
+      "friendEmail": "maria.perez@gmail.com",
+      "invitationId": ""
+    },
+    {
+      "friendId": "",
+      "friendName": "Tercer Amigo",
+      "friendEmail": "terceramigo@gmail.com",
+      "invitationId": "BT56TF"
+    },
+    {
+      "friendId": "",
+      "friendName": "Cuarto Amigo",
+      "friendEmail": "cuartoamigo@gmail.com",
+      "invitationId": "JU678Y"
+    },
+    {
+      "friendId": "",
+      "friendName": "Quinto Amigo",
+      "friendEmail": "quintoamigo@gmail.com",
+      "invitationId": "78UY65"
+    },
+    {
+      "friendId": "",
+      "friendName": "Sexto Amigo",
+      "friendEmail": "sextoamigo@gmail.com",
+      "invitationID": "4THGF9"
+    },
+    {
+      "friendId": "",
+      "friendName": "Séptimo Amigo",
+      "friendEmail": "septimoamigo@gmail.com",
+      "invitationId": "UJ78YH"
+    },
+    {
+      "friendId": "",
+      "friendName": "Octavo Amigo",
+      "friendEmail": "octavoamigo@gmail.com",
+      "invitationId": "HJYGT7"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "62b5e88ba6e78636d6488646"
   },
-  {
-    "_id": {
-      "$oid": "62b5e88ba6e78636d6488647"
+  "name": "Ramiro Mejías",
+  "email": "ramiro.mejias@gmail.com",
+  "password": "Password.123",
+  "groups": [
+    {
+      "$oid": "62b737d75163f4de8bc0c006"
     },
-    "name": "Maria Pérez",
-    "email": "maria.perez@gmail.com",
-    "password": "Password.123",
-    "groups": [
-      "62b737d75163f4de8bc0c006"
-    ]
-  }
-]
+    {
+      "$oid": "62b7383f5163f4de8bc0c007"
+    }
+  ],
+  "friends": [
+    {
+      "friendId": "62b5e88ba6e78636d6488645",
+      "friendName": "Santiago Bruno",
+      "friendEmail": "santt31@gmail.com",
+      "invitationId": ""
+    },
+    {
+      "friendId": "",
+      "friendName": "Marily Rodriguez",
+      "friendEmail": "marilyrf54@gmail.com",
+      "invitationId": "wrpfSY",
+      "_id": {
+        "$oid": "62efc0ebb7cb4f265638a938"
+      }
+    },
+    {
+      "friendId": "",
+      "friendName": "Marbelis Rodriguez",
+      "friendEmail": "marbelistrust@gmail.com",
+      "invitationId": "eZr749",
+      "_id": {
+        "$oid": "62f109fd9bbcf3e59ab174f2"
+      }
+    },
+    {
+      "friendId": "",
+      "friendName": "Santi",
+      "friendEmail": "santt29@gmail.com",
+      "invitationId": "tB3RDl",
+      "_id": {
+        "$oid": "62f12b6b9bbcf3e59ab174fb"
+      }
+    },
+    {
+      "friendId": "",
+      "friendName": "Ramiro2",
+      "friendEmail": "ramiro2@gmail.com",
+      "invitationId": "59CtTm",
+      "_id": {
+        "$oid": "62f12f6c9bbcf3e59ab174ff"
+      }
+    },
+    {
+      "friendId": "",
+      "friendName": "Marbelis",
+      "friendEmail": "marbelistrusta@gmail.com",
+      "invitationId": "9MStGf",
+      "_id": {
+        "$oid": "62f285979bbcf3e59ab17509"
+      }
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "62b5e88ba6e78636d6488647"
+  },
+  "name": "Maria Pérez",
+  "email": "maria.perez@gmail.com",
+  "password": "Password.123",
+  "groups": [
+    {
+      "$oid": "62b737d75163f4de8bc0c006"
+    }
+  ],
+  "friends": [
+    ""
+  ]
+}]
