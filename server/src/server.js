@@ -9,6 +9,8 @@ app.disable("x-powered-by");
 app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
+app.use("/",express.static(FRONTEND_DIR));
+
 
 const loginRouter = require("./resources/login/login.route");
 app.use("/login", loginRouter);
@@ -27,6 +29,9 @@ app.use("/expenses", expenseRouter);
 
 const emailRouter = require("./resources/email/email.route");
 app.use("/email", emailRouter);
+
+app.use("/*", async (req, res, next) => {next(new TodosApiError(404, `Not Found`));
+
 
 const startServer = async () => {
   await db.connect();
