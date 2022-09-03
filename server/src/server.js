@@ -1,8 +1,10 @@
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
-const { PORT } = require("./config");
+const { PORT,FRONTEND_DIR} = require("./config");
 const db = require("./db");
+const { errorHandler, TodosApiError } = require("./errors");
+
 
 const app = express();
 app.disable("x-powered-by");
@@ -30,7 +32,7 @@ app.use("/expenses", expenseRouter);
 const emailRouter = require("./resources/email/email.route");
 app.use("/email", emailRouter);
 
-app.use("/*", async (req, res, next) => {next(new TodosApiError(404, `Not Found`));
+app.use("/*", async (req, res, next) => {next(new TodosApiError(404, `Not Found`));});
 
 
 const startServer = async () => {

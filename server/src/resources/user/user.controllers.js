@@ -77,16 +77,17 @@ const createOne = async (req, res) => {
     const doc = await User.create( newdata);
     console.log("doc es ", doc);
     res.status(201).json({ results: [doc] });
+    console.log("user created succesfully");
+
    }
-   else{
-    console.log("Cration failed: user already exist !!!");
-    res.status(500).json({ error: " Creation failed" });
+   else {
+    console.log("user exists");
+    res.status(200).json({ error: "user exists" });
    }
     
-
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: " Creation failed" });
+    res.status(200).json({ error: "failed to create the user account" });
   }
 };
 

@@ -20,7 +20,16 @@ const authenticateUser = async ({ email, password }) => {
   }
   
   const token = auth.createToken(email);
-  return token;
+
+  const loginValidation=
+    {
+          "userId":user._id,
+          "userGroups":user.groups,
+          "userToken":token
+     };
+
+  return loginValidation;
+  
 }
 
 module.exports = {
