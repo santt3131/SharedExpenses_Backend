@@ -40,7 +40,7 @@ const findOne = async (req, res) => {
 
 const createGroupUser = async (req, res) => {
   try {
-    //PASO 1- Verificar que todos los IDs de usuario existan en la coleccion USERS
+    // PASO 1- Verificar que todos los IDs de usuario existan en la coleccion USERS
     friends = req.body.friends;
     arrayUser = [req.body.ownerId];
 
@@ -56,14 +56,14 @@ const createGroupUser = async (req, res) => {
       },
     });
 
-    //si todos los usuarios buscados son encontrados
+    // Si no todos los usuarios buscados son encontrados
     if (isArrayuserInUserCollection.length !== arrayUser.length) {
       return res
         .status(500)
         .json({ error: "Cannot update, some user IDs were not found" });
     }
 
-    //PASO 2- Creo el grupo
+    // PASO 2- Creo el grupo
     const gr = {
       groupName: req.body.groupName,
       groupDescription: req.body.groupDescription,
@@ -76,8 +76,8 @@ const createGroupUser = async (req, res) => {
       return res.status(500).json({ error: "Group was not created" });
     }
 
-    //PASO 3 - Actualizo user
-    //A todos esos usuarios del array del objeto, le agrego a cada uno el id del grupo
+    // PASO 3- Actualizo user
+    // A todos esos usuarios del array del objeto, le agrego a cada uno el id del grupo
     const doc = await User.updateMany(
       {
         _id: {
@@ -105,21 +105,74 @@ const createGroupUser = async (req, res) => {
   }
 };
 
-//Solo actualizará groupName and groupDescripción
-//Agrego los expenses...
 const updateOne = async (req, res) => {
-  const { id } = req.params;
   try {
-    const doc = await Group.findOneAndUpdate({ _id: id }, req.body, {
+    const { id } = req.params;
+
+    // PASO 1- Verificar que todos los IDs de usuario existan en la coleccion USERS
+    friends = req.body.friends;
+    arrayUser = [req.body.ownerId];
+
+    for (i = 0; i < friends.length; i++) {
+      if (friends[i].selected === true) {
+        arrayUser.push(friends[i].friendId);
+      }
+    }
+
+    let isArrayuserInUserCollection = await User.find({
+      _id: {
+        $in: arrayUser,
+      },
+    });
+
+    // Si no todos los usuarios buscados son encontrados
+    if (isArrayuserInUserCollection.length !== arrayUser.length) {
+      return res
+        .status(500)
+        .json({ error: "Cannot update, some user IDs were not found" });
+    }
+
+    // PASO 2- Preparo los datos actualizados del grupo y actualizo el grupo
+    const gr = {
+      groupName: req.body.groupName,
+      groupDescription: req.body.groupDescription,
+      ownerId: req.body.ownerId,
+      users: arrayUser,
+    };
+
+    const doc = await Group.findOneAndUpdate({ _id: id }, gr, {
       new: true,
     });
     if (!doc) {
-      return res.status(404).json({ error: "Not found" });
+      return res.status(404).json({ error: "Cannot update" });
     }
-    res.status(200).json({ results: [doc] });
+
+    // PASO 3- Actualizo user
+    // A todos esos usuarios del array del objeto, le agrego a cada uno el id del grupo
+    const docm = await User.updateMany(
+      {
+        _id: {
+          $in: arrayUser,
+        },
+      },
+      {
+        $push: {
+          groups: [id],
+        },
+      },
+      {
+        multi: true,
+      }
+    );
+
+    if (!docm) {
+      return res.status(404).json({ error: "Cannot update the goup in users" });
+    }
+
+    res.status(200).json({ results: "Group was updated with its users" });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: "Cannot update" });
+    res.status(500).json({ error: "Cannot update the group" });
   }
 };
 
