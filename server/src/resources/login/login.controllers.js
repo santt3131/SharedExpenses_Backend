@@ -28,6 +28,7 @@ else
     const loginValidation = await userServices.authenticateUser(loginData);
     res.status(200).json(loginValidation);
   } catch (e) {
+    
     console.log(e);
   }
 

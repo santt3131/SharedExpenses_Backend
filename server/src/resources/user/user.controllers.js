@@ -74,20 +74,21 @@ const createOne = async (req, res) => {
    
    const exist = await User.findOne({ "email": newUser.email });
    if(!exist){
-    const doc = await User.create( newdata);
+    const doc = await User.create(newdata);
     console.log("doc es ", doc);
-    res.status(201).json({ results: [doc] });
+    //res.status(201).json({ results: [doc] });
+    res.status(201).json({ message: "user_created" });
     console.log("user created succesfully");
 
    }
    else {
     console.log("user exists");
-    res.status(200).json({ error: "user exists" });
+    res.status(200).json({ message: "user_exist" });
    }
     
   } catch (error) {
     console.log(error);
-    res.status(200).json({ error: "failed to create the user account" });
+    res.status(500).json({ error: "failed to create the user account" });
   }
 };
 

@@ -10,8 +10,14 @@ const authenticateUser = async ({ email, password }) => {
   }
   
   const user = await User.findOne({ email }).select("+password").lean().exec();
-  if (!user) {  
-    errUnauthorized(`Wrong email or password 2`);
+  if (!user) { 
+    const loginValidation=
+    {
+          "loginResult":"bad",
+          "error": "Wrong email or password" 
+     }; 
+     return loginValidation;
+    //errUnauthorized(`Wrong email or password 2`);
   }
   
   const passwordMatches = await auth.comparePasswords(password, user.password);
@@ -23,6 +29,7 @@ const authenticateUser = async ({ email, password }) => {
 
   const loginValidation=
     {
+          "loginResult":"good",
           "userId":user._id,
           "userGroups":user.groups,
           "userToken":token

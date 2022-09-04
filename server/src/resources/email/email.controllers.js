@@ -1,6 +1,9 @@
 const nodemailer = require("nodemailer");
 const { EMAIL_USER, EMAIL_PASSWORD } = require("../../config");
 const User = require("../user/user.model");
+var generator = require('generate-password');
+
+
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
@@ -116,7 +119,64 @@ const resendInvitation = async (req, res) => {
   }
 };
 
+const resetPassword = async (req, res) => {
+
+  const { email } = req.body;
+
+  const userExist = await User.findOne({ email: email });
+
+  var tempCode = generator.generate({ length: 10, numbers: true  });
+  
+
+  const message = `<h2>Shared Expenses password reset</h2>
+  <p>Hello</p>
+  <p> Your temporary password is :${tempCode} 
+  please, use this link to update your new password</p>
+  <ol>
+  <li>Download the application<br />
+  <strong>Android: </strong>https://play.google.com/store/apps/details?id=com.SharedExpenses.SharedExpensesMobile<br />
+  <strong>iOS: </strong>https://apps.apple.com/us/app/sharedexpenses/id512463895</li>
+  <li>Register using this link<br />https://wwww.sharedexpenses.com/register?friend</li>
+  <ol>`;
+
+  if(userExist){
+
+      try {
+            const send = await transporter.sendMail({
+            from: '"Shared Expenses" <sharedexpenses.europe@gmail.com>', // remitente
+            to: email, // destinatario
+            subject: "sharedexpenses password reset", // asunto
+            html: message, // cuerpo
+          });
+          if (!send) {
+            console.log("Error sending email");
+            return res
+              .status(500)
+              .json({ status: "bad" });
+          }
+
+          console.log("email sent sucessfully");
+          return res
+              .status(200)
+              .json({  "user": email, 
+              "code": tempCode,
+              "status": "good"});
+
+      } catch (error) {
+        console.log(error, "email not sent");
+      }
+  }
+  
+  else {
+    
+    res.status(201).json({ error: "user not found "});
+  }
+  
+
+};
+
 module.exports = {
+  resetPassword,
   sendInvitation,
   resendInvitation,
 };
