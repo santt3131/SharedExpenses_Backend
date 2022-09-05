@@ -21,6 +21,9 @@ app.use("/login", loginRouter);
 const userRouter = require("./resources/user/user.route");
 app.use("/users", userRouter);
 
+const pwdResetRouter = require("./resources/user/pwdreset/pwdreset.route");
+app.use("/pwdreset", pwdResetRouter);
+
 const groupRouter = require("./resources/group/group.route");
 app.use("/groups", groupRouter);
 
