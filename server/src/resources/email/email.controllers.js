@@ -1,6 +1,9 @@
 const nodemailer = require("nodemailer");
 const { EMAIL_USER, EMAIL_PASSWORD } = require("../../config");
 const User = require("../user/user.model");
+var generator = require('generate-password');
+
+
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
@@ -115,6 +118,7 @@ const resendInvitation = async (req, res) => {
     res.status(500).json({ error: "Errors reinviting friends" });
   }
 };
+
 
 module.exports = {
   sendInvitation,
