@@ -15,6 +15,7 @@ app.use(express.json());
 app.use("/",express.static(FRONTEND_DIR));
 
 
+
 const loginRouter = require("./resources/login/login.route");
 app.use("/login", loginRouter);
 
@@ -23,6 +24,9 @@ app.use("/users", userRouter);
 
 const pwdResetRouter = require("./resources/user/pwdreset/pwdreset.route");
 app.use("/pwdreset", pwdResetRouter);
+
+const register = require("./resources/user/pendinguser/pendinguser.route");
+app.use("/register", register);
 
 const groupRouter = require("./resources/group/group.route");
 app.use("/groups", groupRouter);
