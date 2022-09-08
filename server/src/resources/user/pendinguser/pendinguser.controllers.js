@@ -207,7 +207,7 @@ const registerEmail = async (req, res) => {
               .status(200)
               .json({  "user": email, 
               "code": tempCode,
-              "status": "good"});
+              "status": "success"});
 
       } catch (error) {
         console.log(error, "email not sent");
@@ -216,7 +216,7 @@ const registerEmail = async (req, res) => {
   
   else {
     
-    res.status(201).json({ error: "user already exist "});
+    res.status(201).json({ status: "user_already_exist "});
   }
   
 
