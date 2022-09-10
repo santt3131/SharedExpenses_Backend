@@ -22,19 +22,36 @@ const transporter = nodemailer.createTransport({
 
 
 const updatepassword = async (req, res) => {
+
   const { email, code, password } = req.body;
   const encryptedPassword = await Auth.encryptPassword(password);
+  console.log(req.body);
 
   try {
-    const exist = await pwdreset.findOne({ email: email });
+    const exist = await pwdreset.findOne({ email: email,code:code });
+
     if (!exist) {
       return res.status(404).json({ status : "failed" });
     }
     
-    const doc = await User.findOneAndUpdate({ email: email }, {password : encryptedPassword});
-    const borrar = await pwdreset.findOneAndDelete({ email: email, code: code });
-
-    return res.status(200).json({ status : "success" });
+    else if(code === exist.code)
+    {
+      const doc = await User.findOneAndUpdate({ email: email }, {password : encryptedPassword});
+      const borrar = await pwdreset.findOneAndDelete({ email: email, code: code });
+      return res.status(200).json({ status : "success" });
+    
+      /*
+      if(doc && borrar){
+      return res.status(200).json({ status : "success" });
+      }*/
+  
+    }
+    else
+    {
+      console.log("failed to execute");
+      return res.status(500).json({ status : "failed to execute" });
+    
+    }
 
   } catch (error) {
     console.log(error);
@@ -77,24 +94,18 @@ const resetPasswordEmail = async (req, res) => {
             const doc = await pwdreset.create(resetRequest);
 
             const send = await transporter.sendMail({
-            from: '"Shared Expenses" <sharedexpenses.europe@gmail.com>', // remitente
-            to: email, // destinatario
-            subject: "sharedexpenses password reset", // asunto
-            html: message, // cuerpo
+            from: '"Shared Expenses" <sharedexpenses.europe@gmail.com>', 
+            to: email, 
+            subject: "sharedexpenses password reset", 
+            html: message, 
           });
           if (!send) {
             console.log("Error sending email");
-            return res
-              .status(500)
-              .json({ status: "bad" });
+            return res.status(500).json({ status: "bad" });
           }
 
           console.log("email sent sucessfully");
-          return res
-              .status(200)
-              .json({  "user": email, 
-              "code": tempCode,
-              "status": "good"});
+          return res.status(200).json({  "user": email, "code": tempCode,status : "good"});
 
       } catch (error) {
         console.log(error, "email not sent");
