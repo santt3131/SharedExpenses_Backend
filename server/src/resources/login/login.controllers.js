@@ -2,7 +2,6 @@ const User = require("../user/user.model");
 const userServices = require("../user/user.service");
 const Auth = require("../user/user.service");
 const { needsAuthToken } = require("../user/auth/auth.middleware");
-//import * as tk from './token';
 
 
 const login = async (req, res) => {
@@ -10,6 +9,8 @@ const login = async (req, res) => {
   try {
     const loginValidation = await userServices.authenticateUser(loginData);
     res.status(200).json(loginValidation);
+    res.status(200).json(needsAuthToken.token);
+
   } catch (e) {
     
     console.log(e);

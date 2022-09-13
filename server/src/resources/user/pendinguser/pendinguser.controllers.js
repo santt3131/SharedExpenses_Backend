@@ -66,6 +66,8 @@ const registerEmail = async (req, res) => {
 
   const userExist = await User.findOne({ email: email });
 
+  console.log(userExist);
+
   const encryptedPassword = await Auth.encryptPassword(password);
 
   var tempCode = generator.generate({ length: 4, numbers: true  });
@@ -79,8 +81,8 @@ const registerEmail = async (req, res) => {
     }
 ];
   const message = `<h2>Shared Expenses password reset</h2>
-  <p>Hello</p>
-  <p> Your temporary password is :${tempCode} 
+  <p>Hello</p>${name}
+  <p> Your validation code is :${tempCode} 
   please, use this link to update your new password</p>
   <ol>
   <li>Download the application<br />
