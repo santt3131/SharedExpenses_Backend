@@ -5,9 +5,14 @@ const { needsAuthToken } = require("../user/auth/auth.middleware");
 
 
 const login = async (req, res) => {
-  const loginData = req.body;
+  const loginData = req;
   try {
     const loginValidation = await userServices.authenticateUser(loginData);
+
+    //if(loginValidation.status == "failed") return res.status(400).json({ status: "failed" });
+
+    console.log(loginValidation);
+    
     res.status(200).json(loginValidation);
     res.status(200).json(needsAuthToken.token);
 
