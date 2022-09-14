@@ -20,7 +20,7 @@ const findMany = async (req, res) => {
 const findManyExpenses = async (req, res) => {
   const { id } = req.params;
   try {
-    const docs = await Expense.find({ 'users.userId': id })
+    const docs = await Expense.find({ 'users.userId': id }).populate("users.userId","_id name email")
       .lean()
       .exec();
     res.status(200).json({ results: docs });
