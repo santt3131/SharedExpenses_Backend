@@ -24,7 +24,7 @@ const transporter = nodemailer.createTransport({
 
 
 const newuserConfirmation = async (req, res) => {
-  const { email, code } = req.body;
+  const { email, code} = req.body;
 
   try {
 
@@ -39,21 +39,22 @@ const newuserConfirmation = async (req, res) => {
 
     console.log(code);
 
-    if (exist) {
-      return res.status(404).json({ status : "failed" });
+    if (exist)  
+    {
+      return res.status(201).json({ status : "User exist" });
     }
 
-    if (userData.code == code) {
+    else if (userData.code == code) {
       const doc = await User.create(newdata);
       const borrar = await Pendinguser.findOneAndDelete({ email: email });
       return res.status(200).json({ status : "success" });
     }
-
-    return res.status(404).json({ status : "failed" });
-
+    else{
+    return res.status(401).json({ status : "Error validation code " });
+    }
   } catch (error) {
     console.log(error);
-    res.status(500).json({ status : "failed" });
+    res.status(500).json({ status : "Failed internal error" });
   }
 };
 

@@ -65,7 +65,7 @@ const resetPasswordEmail = async (req, res) => {
 
   const { email } = req.body;
 
-  const userExist = await User.findOne({ email: email });
+  const userExist = await User.findOne({ email: email});
 
   var tempCode = generator.generate({ length: 4, numbers: true  });
   
@@ -76,7 +76,7 @@ const resetPasswordEmail = async (req, res) => {
     }
 ];
   const message = `<h2>Shared Expenses password reset</h2>
-  <p>Hello</p>
+  <p>Hello,</p>
   <p> Your temporary password is :${tempCode} 
   please, use this link to update your new password</p>
   <ol>

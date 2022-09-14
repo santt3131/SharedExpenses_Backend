@@ -17,7 +17,7 @@ const authenticateUser = async ({ email, password }) => {
           "error": "Wrong email or password" 
      }; 
      return loginValidation;
-    //errUnauthorized(`Wrong email or password 2`);
+    errUnauthorized(`Wrong email or password 2`);
   }
   
   const passwordMatches = await auth.comparePasswords(password, user.password);

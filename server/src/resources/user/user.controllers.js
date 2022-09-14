@@ -43,21 +43,6 @@ const findOne = async (req, res) => {
     res.status(500).json({ error: "Cannot get Cutomer" });
   }
 };
-const findOneByEmail = async (req, res) => {
-  const { email } = req.params;
-  try {
-    const doc = await User.findOne({ "email": email });
-    if (!doc) {
-      console.log(email);
-      return res.status(400).json({ results: [doc] });
-    }
-    res.status(200).json({ results: [doc] });
-    console.log(doc.name);
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: "Cannot get Cutomer" });
-  }
-};
 
 const createOne = async (req, res) => {
   try {
@@ -77,13 +62,13 @@ const createOne = async (req, res) => {
     const doc = await User.create(newdata);
     console.log("doc es ", doc);
     //res.status(201).json({ results: [doc] });
-    res.status(201).json({ message: "user_created" });
+    res.status(200).json({ message: "user_created" });
     console.log("user created succesfully");
 
    }
    else {
     console.log("user exists");
-    res.status(200).json({ message: "user_exist" });
+    res.status(201).json({ message: "user_exist" });
    }
     
   } catch (error) {
@@ -237,7 +222,6 @@ const findMyGroups = async (req, res) => {
 module.exports = {
   findMany,
   findOne,
-  findOneByEmail,
   findManyExpenses,
   createOne,
   updateOne,
