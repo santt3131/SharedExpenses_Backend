@@ -62,13 +62,13 @@ const createOne = async (req, res) => {
     const doc = await User.create(newdata);
     console.log("doc es ", doc);
     //res.status(201).json({ results: [doc] });
-    res.status(200).json({ message: "user_created" });
+    return res.status(200).json({ message: "user_created" });
     console.log("user created succesfully");
 
    }
    else {
     console.log("user exists");
-    res.status(201).json({ message: "user_exist" });
+    return res.status(201).json({ message: "user_exist" });
    }
     
   } catch (error) {
