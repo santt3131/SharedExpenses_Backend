@@ -1,0 +1,35 @@
+[{
+  "_id": {
+    "$oid": "6324faf37d833d9e0a2949ac"
+  },
+  "groupName": "Full Stack Alive",
+  "groupDescription": "Llegamos al final",
+  "ownerId": "6324e9c34272153679e3c89a",
+  "users": [
+    {
+      "$oid": "6324e9c34272153679e3c89a"
+    },
+    {
+      "$oid": "6324f8437d833d9e0a294998"
+    },
+    {
+      "$oid": "6324f8d17d833d9e0a2949a2"
+    }
+  ],
+  "expenses": [
+    {
+      "expenseId": "6324fc4f7d833d9e0a2949bc",
+      "expenseTitle": "Spending on Entertainment 16-9-2022 22:43h",
+      "_id": {
+        "$oid": "6324fc4f7d833d9e0a2949c1"
+      }
+    },
+    {
+      "expenseId": "6324fcfd7d833d9e0a2949ce",
+      "expenseTitle": "Spending on Transportation 16-9-2022 22:47h",
+      "_id": {
+        "$oid": "6324fcfd7d833d9e0a2949d3"
+      }
+    }
+  ]
+}]
