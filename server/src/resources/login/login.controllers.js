@@ -2,14 +2,20 @@ const User = require("../user/user.model");
 const userServices = require("../user/user.service");
 const Auth = require("../user/user.service");
 const { needsAuthToken } = require("../user/auth/auth.middleware");
-//import * as tk from './token';
 
 
 const login = async (req, res) => {
-  const loginData = req.body;
+  const loginData = req;
   try {
     const loginValidation = await userServices.authenticateUser(loginData);
+
+    //if(loginValidation.status == "failed") return res.status(400).json({ status: "failed" });
+
+    console.log(loginValidation);
+    
     res.status(200).json(loginValidation);
+    res.status(200).json(needsAuthToken.token);
+
   } catch (e) {
     
     console.log(e);
@@ -31,5 +37,6 @@ const login = async (req, res) => {
 
 
 module.exports = {
-login
+login,
+logOut
 };
