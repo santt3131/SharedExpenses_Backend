@@ -35,6 +35,10 @@ const expenseSchema = new Schema(
           type: Schema.Types.ObjectId,
           ref: "User",
         },
+        amountShouldPay: {
+          type: Schema.Types.Decimal128,
+          required: true,
+        },
       },
     ],
     payments: [

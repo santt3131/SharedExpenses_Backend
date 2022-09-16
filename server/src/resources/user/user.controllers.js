@@ -20,11 +20,12 @@ const findMany = async (req, res) => {
 const findManyExpenses = async (req, res) => {
   const { id } = req.params;
   try {
-    const docs = await Expense.find({ 'users.userId': id }).populate("users.userId","_id name email")
+    const docs = await Expense.find({ "users.userId": id })
+      .populate("users.userId", "_id name email")
+      .sort({ _id: -1 })
       .lean()
       .exec();
     res.status(200).json({ results: docs });
-
   } catch (error) {
     res.status(500).send({ error: "Internal error" });
   }
@@ -46,7 +47,7 @@ const findOne = async (req, res) => {
 const findOneByEmail = async (req, res) => {
   const { email } = req.params;
   try {
-    const doc = await User.findOne({ "email": email });
+    const doc = await User.findOne({ email: email });
     if (!doc) {
       console.log(email);
       return res.status(400).json({ results: [doc] });
@@ -64,28 +65,25 @@ const createOne = async (req, res) => {
     const newUser = req.body;
     console.log("new User es", newUser);
     const encryptedPassword = await Auth.encryptPassword(newUser.password);
-    const newdata=[
+    const newdata = [
       {
-           "name":newUser.name,
-            "email":newUser.email,
-            "password":encryptedPassword,
-       }
-   ]   ;
-   
-   const exist = await User.findOne({ "email": newUser.email });
-   if(!exist){
-    const doc = await User.create(newdata);
-    console.log("doc es ", doc);
-    //res.status(201).json({ results: [doc] });
-    res.status(201).json({ message: "user_created" });
-    console.log("user created succesfully");
+        name: newUser.name,
+        email: newUser.email,
+        password: encryptedPassword,
+      },
+    ];
 
-   }
-   else {
-    console.log("user exists");
-    res.status(200).json({ message: "user_exist" });
-   }
-    
+    const exist = await User.findOne({ email: newUser.email });
+    if (!exist) {
+      const doc = await User.create(newdata);
+      console.log("doc es ", doc);
+      //res.status(201).json({ results: [doc] });
+      res.status(201).json({ message: "user_created" });
+      console.log("user created succesfully");
+    } else {
+      console.log("user exists");
+      res.status(200).json({ message: "user_exist" });
+    }
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "failed to create the user account" });
@@ -229,10 +227,7 @@ const findMyGroups = async (req, res) => {
     console.log(error);
     res.status(500).json({ error: "Cannot get groups of this user" });
   }
-
-
 };
-
 
 module.exports = {
   findMany,
