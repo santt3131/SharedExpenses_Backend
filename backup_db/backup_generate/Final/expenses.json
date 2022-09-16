@@ -1,0 +1,139 @@
+[{
+  "_id": {
+    "$oid": "6324fc4f7d833d9e0a2949bc"
+  },
+  "title": "Spending on Entertainment 16-9-2022 22:43h",
+  "date": {
+    "$date": {
+      "$numberLong": "1663368231001"
+    }
+  },
+  "categoryId": "62b9da02355700006d004aa3",
+  "note": "Super!",
+  "expenseTotal": {
+    "$numberDecimal": "120"
+  },
+  "users": [
+    {
+      "debt": {
+        "$numberDecimal": "0"
+      },
+      "paid": {
+        "$numberDecimal": "100"
+      },
+      "userId": {
+        "$oid": "6324e9c34272153679e3c89a"
+      },
+      "amountShouldPay": {
+        "$numberDecimal": "60"
+      },
+      "_id": {
+        "$oid": "6324fc4f7d833d9e0a2949bd"
+      }
+    },
+    {
+      "debt": {
+        "$numberDecimal": "40"
+      },
+      "paid": {
+        "$numberDecimal": "20"
+      },
+      "userId": {
+        "$oid": "6324f8437d833d9e0a294998"
+      },
+      "amountShouldPay": {
+        "$numberDecimal": "60"
+      },
+      "_id": {
+        "$oid": "6324fc4f7d833d9e0a2949be"
+      }
+    },
+    {
+      "debt": {
+        "$numberDecimal": "0"
+      },
+      "paid": {
+        "$numberDecimal": "0"
+      },
+      "userId": {
+        "$oid": "6324f8d17d833d9e0a2949a2"
+      },
+      "amountShouldPay": {
+        "$numberDecimal": "0"
+      },
+      "_id": {
+        "$oid": "6324fc4f7d833d9e0a2949bf"
+      }
+    }
+  ],
+  "payments": []
+},{
+  "_id": {
+    "$oid": "6324fcfd7d833d9e0a2949ce"
+  },
+  "title": "Spending on Transportation 16-9-2022 22:47h",
+  "date": {
+    "$date": {
+      "$numberLong": "1663368439628"
+    }
+  },
+  "categoryId": "62b9da08355700006d004aa4",
+  "note": "Super!",
+  "expenseTotal": {
+    "$numberDecimal": "300"
+  },
+  "users": [
+    {
+      "debt": {
+        "$numberDecimal": "100"
+      },
+      "paid": {
+        "$numberDecimal": "0"
+      },
+      "userId": {
+        "$oid": "6324e9c34272153679e3c89a"
+      },
+      "amountShouldPay": {
+        "$numberDecimal": "100"
+      },
+      "_id": {
+        "$oid": "6324fcfd7d833d9e0a2949cf"
+      }
+    },
+    {
+      "debt": {
+        "$numberDecimal": "0"
+      },
+      "paid": {
+        "$numberDecimal": "150"
+      },
+      "userId": {
+        "$oid": "6324f8437d833d9e0a294998"
+      },
+      "amountShouldPay": {
+        "$numberDecimal": "100"
+      },
+      "_id": {
+        "$oid": "6324fcfd7d833d9e0a2949d0"
+      }
+    },
+    {
+      "debt": {
+        "$numberDecimal": "0"
+      },
+      "paid": {
+        "$numberDecimal": "150"
+      },
+      "userId": {
+        "$oid": "6324f8d17d833d9e0a2949a2"
+      },
+      "amountShouldPay": {
+        "$numberDecimal": "100"
+      },
+      "_id": {
+        "$oid": "6324fcfd7d833d9e0a2949d1"
+      }
+    }
+  ],
+  "payments": []
+}]

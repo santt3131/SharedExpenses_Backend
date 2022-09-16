@@ -1,0 +1,68 @@
+[{
+  "_id": {
+    "$oid": "6324e9c34272153679e3c89a"
+  },
+  "name": "Ramiro Mejias",
+  "email": "ramiro.mejias@gmail.com",
+  "password": "$2b$10$W2IR3lT7PrFhFqOQdxkcFuPEFfFCkS8b4qnn4OHTLO9q97xBVfdxq",
+  "groups": [
+    {
+      "$oid": "6324faf37d833d9e0a2949ac"
+    }
+  ],
+  "friends": [
+    {
+      "friendId": "6324f8437d833d9e0a294998",
+      "friendName": "Santiago Bruno",
+      "friendEmail": "santt31@gmail.com",
+      "invitationId": "",
+      "_id": {
+        "$oid": "6324f4e37d833d9e0a294984"
+      }
+    },
+    {
+      "friendId": "6324f8d17d833d9e0a2949a2",
+      "friendName": "Raul Mendez",
+      "friendEmail": "rmendezvasquez@gmail.com",
+      "invitationId": "",
+      "_id": {
+        "$oid": "6324f5157d833d9e0a294987"
+      }
+    },
+    {
+      "friendId": "",
+      "friendName": "Abdelwahed",
+      "friendEmail": "boudjemaaabdelwahed@gmail.com",
+      "invitationId": "Pq3rkQ",
+      "_id": {
+        "$oid": "6324f72b7d833d9e0a29498f"
+      }
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "6324f8437d833d9e0a294998"
+  },
+  "name": "Santiago Bruno",
+  "email": "santt31@gmail.com",
+  "password": "$2b$10$h39NQcaRh.wAGfk7qTa7B.eohgQl2jKJVUtgKgIcmroV2MWl9uWxy",
+  "groups": [
+    {
+      "$oid": "6324faf37d833d9e0a2949ac"
+    }
+  ],
+  "friends": []
+},{
+  "_id": {
+    "$oid": "6324f8d17d833d9e0a2949a2"
+  },
+  "name": "Raul Mendez",
+  "email": "rmendezvasquez@gmail.com",
+  "password": "$2b$10$w3kLaJiwyu5brJxBmFBg2.OWwzOsbnPTamjAYNqGKLDpUhteLs/ga",
+  "groups": [
+    {
+      "$oid": "6324faf37d833d9e0a2949ac"
+    }
+  ],
+  "friends": []
+}]

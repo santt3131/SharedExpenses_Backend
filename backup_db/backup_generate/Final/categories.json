@@ -1,0 +1,43 @@
+[{
+  "_id": {
+    "$oid": "62b9d9963b031c174dc38fa5"
+  },
+  "category": "Home",
+  "image": "home.svg"
+},{
+  "_id": {
+    "$oid": "62b9d9eb355700006d004aa2"
+  },
+  "category": "Food and Drink",
+  "image": "foodanddrink.svg"
+},{
+  "_id": {
+    "$oid": "62b9da02355700006d004aa3"
+  },
+  "category": "Entertainment",
+  "image": "entertaiment.svg"
+},{
+  "_id": {
+    "$oid": "62b9da08355700006d004aa4"
+  },
+  "category": "Transportation",
+  "image": "transportation.svg"
+},{
+  "_id": {
+    "$oid": "62b9da0d355700006d004aa5"
+  },
+  "category": "Utilities",
+  "image": "utilities.svg"
+},{
+  "_id": {
+    "$oid": "62b9da12355700006d004aa6"
+  },
+  "category": "Life",
+  "image": "life.svg"
+},{
+  "_id": {
+    "$oid": "62b9da17355700006d004aa7"
+  },
+  "category": "General",
+  "image": "general.svg"
+}]
