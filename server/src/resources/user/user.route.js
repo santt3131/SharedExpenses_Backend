@@ -17,7 +17,6 @@ router.get("/:id/paymentsto", userControllers.findManyPaymentsTo);
 router.get("/:id/friends", userControllers.findMyFriends);
 router.put("/:id/friends", userControllers.updateFriend);
 router.delete("/:id/friends", userControllers.deleteFriend);
-
 router.get("/:id/activefriends", userControllers.findMyActiveFriends);
 
 router.get("/:id/groups", userControllers.findMyGroups);

@@ -106,33 +106,6 @@ const updateOne = async (req, res) => {
   }
 };
 
-const updateFriend = async (req, res) => {
-  const { id } = req.params;
-  const { name, email } = req.body;
-
-  try {
-    const doc = await User.findOneAndUpdate(
-      { _id: id, "friends.friendEmail": email },
-      {
-        $set: {
-          "friends.$.friendName": name,
-        },
-      },
-      {
-        new: true,
-      }
-    );
-
-    if (!doc) {
-      return res.status(404).json({ error: "Friend not found" });
-    }
-    res.status(200).json({ results: [doc] });
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: "Cannot update friend" });
-  }
-};
-
 const deleteOne = async (req, res) => {
   const { id } = req.params;
   try {
@@ -253,6 +226,33 @@ const findMyGroups = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Cannot get groups of this user" });
+  }
+};
+
+const updateFriend = async (req, res) => {
+  const { id } = req.params;
+  const { name, email } = req.body;
+
+  try {
+    const doc = await User.findOneAndUpdate(
+      { _id: id, "friends.friendEmail": email },
+      {
+        $set: {
+          "friends.$.friendName": name,
+        },
+      },
+      {
+        new: true,
+      }
+    );
+
+    if (!doc) {
+      return res.status(404).json({ error: "Friend not found" });
+    }
+    res.status(200).json({ results: [doc] });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Cannot update friend" });
   }
 };
 

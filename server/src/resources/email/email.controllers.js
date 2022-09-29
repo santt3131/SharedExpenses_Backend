@@ -1,9 +1,7 @@
 const nodemailer = require("nodemailer");
 const { EMAIL_USER, EMAIL_PASSWORD } = require("../../config");
 const User = require("../user/user.model");
-var generator = require('generate-password');
-
-
+var generator = require("generate-password");
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
@@ -28,7 +26,6 @@ const sendInvitation = async (req, res) => {
       friends: { $elemMatch: { friendEmail: email } },
     });
     if (friendExist) {
-      console.log("Friend exists");
       return res.status(500).json({ error: "Friend already exists" });
     }
 
@@ -62,14 +59,13 @@ const sendInvitation = async (req, res) => {
       { new: true }
     );
     if (!friend) {
-      console.log("Friend adding new friend in BD");
       return res.status(500).json({ error: "Error adding the new friend" });
     }
 
     res.status(200).json({ message: "Invitation sent successfully" });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: "Errors inviting friends" });
+    res.status(500).json({ error: "Errors inviting friend" });
   }
 };
 
@@ -118,7 +114,6 @@ const resendInvitation = async (req, res) => {
     res.status(500).json({ error: "Errors reinviting friends" });
   }
 };
-
 
 module.exports = {
   sendInvitation,
